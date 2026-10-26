@@ -1,5 +1,7 @@
 # Claude SEO Skills Benchmark
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23668169.svg)](https://doi.org/10.5281/zenodo.23668169)
+
 A small test site with 20 planted SEO problems, an answer key written before any run, and the audits 5 Claude Code SEO skill packs (plus plain Claude Code) wrote for it. Run your own skill against it and compare.
 
 Write-up with the verdict and install commands: **[Best Claude SEO Skills: 5 Packs Tested](https://saeedseo.com/blog/claude-seo-skills/)**, by [Saeed Shahriar](https://saeedseo.com/).
@@ -63,7 +65,9 @@ One small site. It says nothing about local SEO, e-commerce, big sites or links.
 
 ## Cite
 
-See `CITATION.cff`, or the Zenodo DOI on the latest release.
+Shahriar, S. (2026). *Claude SEO Skills Benchmark: 5 Claude Code SEO skill packs audited against 20 planted SEO issues* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23668169
+
+Or use GitHub's "Cite this repository" button (`CITATION.cff`).
 
 ## License
 
