@@ -1,0 +1,46 @@
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/` | No canonical tag (the only page without one) | Add a self-canonical"},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` canonicalises to `/coffee/`, but it is a distinct page that sits in the main nav and the sitemap"},
+{"n":3,"score":1,"fix":"right","quote":"`/wholesale/` is `noindex` but listed in the sitemap, with no sign that this is deliberate"},
+{"n":4,"score":1,"fix":"right","quote":"`/subscriptions/` and `/coffee/` both use \"Single-Origin Indonesian Coffee | Kopi Kita\"."},
+{"n":5,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/` | Title is 88 characters and will be truncated"},
+{"n":6,"score":1,"fix":"right","quote":"`/about/` | No meta description"},
+{"n":7,"score":1,"fix":"right","quote":"`/coffee/aceh-gayo/` (404, linked from `/blog/how-to-brew-pour-over/`)"},
+{"n":8,"score":1,"fix":"right","quote":"`/coffee/flores-bajawa/` is an orphan with no links ... 0 inlinks, 75 words, no Product schema, only in the sitemap"},
+{"n":9,"score":1,"fix":"right","quote":"Redirect chain from the main nav: `/menu/` → `/cafe/` → `/visit/` ... two 301s in a row"},
+{"n":10,"score":1,"fix":"right","quote":"`/assets/css/site.css` is blocked in robots.txt, so Google can't render pages as users see them"},
+{"n":11,"score":1,"fix":"right","quote":"`/coffee/sumatra-mandheling/` (404, in sitemap.xml)"},
+{"n":12,"score":1,"fix":"right","quote":"`/visit/` has no H1 (it starts with an H2 \"Opening hours\")."},
+{"n":13,"score":1,"fix":"right","quote":"`/coffee/brewing-guide/` has two H1s (\"Coffee brewing guide\" and \"Brew methods\"). Make the second an H2"},
+{"n":14,"score":1,"fix":"right","quote":"`/` with `/assets/img/hero-beans.jpg` (the crawl shows \"(missing)\"; the HTML has no `alt` at all)"},
+{"n":15,"score":1,"fix":"right","quote":"`/assets/img/roastery-hero.jpg` is 1,818,123 bytes (1.8 MB), dimensions 2400x1600"},
+{"n":16,"score":1,"fix":"right","quote":"`/blog/cold-brew-at-home/` has 67 words (one paragraph) ... far too short to compete"},
+{"n":17,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/`: the Product has no `name`, which is required."},
+{"n":18,"score":1,"fix":"right","quote":"`/coffee/`. The JSON-LD has two questions ... that are not shown as questions on the page."},
+{"n":19,"score":1,"fix":"right","quote":"Two pour-over articles split the same queries, so neither gets past position 14"},
+{"n":20,"score":1,"fix":"right","quote":"`dateModified` is 2026-09-01, but the visible title, H1 and URL say 2024"}
+],
+"wrong_findings":[
+{"claim":"Blog posts have 1 inlink each (just the blog index)","why_wrong":"crawl.csv shows /blog/how-to-brew-pour-over/ has 2 inlinks; /coffee/brewing-guide/ also links to it"}
+],
+"geo_advice":[
+{"advice":"Restructure guides with question-style H2s and subheads to win AI answers","quote":"The gains are the schema and entity work above, plus question-style H2s on guides."}
+],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/ is thin (102 words) and lists only Kintamani and Ijen, not Flores"},
+{"finding":"/coffee/flores-bajawa/ has no Product schema"},
+{"finding":"No LocalBusiness/CafeOrCoffeeShop markup; /visit/ body has no full street address"},
+{"finding":"Short meta descriptions on /contact/ (77), /blog/ (95), /blog/cold-brew-at-home/ (83)"},
+{"finding":"Sitemap has no lastmod and also lists the noindex /wholesale/ and the canonicalised /shop/"},
+{"finding":"No Open Graph/Twitter tags and no favicon link on any page"},
+{"finding":"Article schema is thin (no image, publisher, mainEntityOfPage); 2024 post's schema headline doesn't match its H1"},
+{"finding":"Brewing guide and pour-over beginner guide use bold run-in labels instead of subheadings"},
+{"finding":"robots.txt Disallow: /cart/ points at a path that doesn't exist"},
+{"finding":"Product markup has a single offer though 250g and 1kg are sold; Java Ijen schema name differs from its H1"},
+{"finding":"/about/ title has no location; no breadcrumbs; product images are near-identical byte sizes (possible placeholders)"}
+],
+"total_findings":40,
+"notes":"Found all 20 planted issues, each with a page named and correct fix advice. One minor factual slip (blog inlinks). Two lines are dated or unsupported: the FAQ point cites the 2023 restriction, not the May 2026 removal; the claim that the pour-over guide's text was revised has no evidence behind it. The audit correctly says llms.txt isn't needed."}
+```

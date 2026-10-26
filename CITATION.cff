@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it."
+title: "Claude SEO Skills Benchmark"
+authors:
+  - family-names: Shahriar
+    given-names: Saeed
+    website: "https://saeedseo.com/"
+date-released: 2026-10-23
+url: "https://saeedseo.com/blog/claude-seo-skills/"
+license: MIT

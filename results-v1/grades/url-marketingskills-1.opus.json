@@ -1,0 +1,49 @@
+I've checked the audit's claims against the HTML and crawl and am now writing up the grade.
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"Contact page has no canonical ... All other pages have a self-referencing canonical; this one does not."},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` canonicalises to `/coffee/` ... Google is told to treat /shop/ as a duplicate of /coffee/."},
+{"n":3,"score":1,"fix":"right","quote":"Wholesale page is `noindex` but is in the sitemap and nav"},
+{"n":4,"score":1,"fix":"right","quote":"`/subscriptions/` and `/coffee/` share the same title ... Both are titled \"Single-Origin Indonesian Coffee | Kopi Kita\"."},
+{"n":5,"score":1,"fix":"right","quote":"The title is \"Bali Kintamani Natural Coffee Beans, ... | Kopi Kita\" (about 88 characters), which will be truncated in results."},
+{"n":6,"score":1,"fix":"right","quote":"About page: missing meta description ... No `<meta name=\"description\">`."},
+{"n":7,"score":1,"fix":"right","quote":"/blog/how-to-brew-pour-over/ links to https://kopikita.test/coffee/aceh-gayo/ (HTTP 404)"},
+{"n":8,"score":1,"fix":"right","quote":"Flores Bajawa product page is effectively orphaned ... It is linked only from the sitemap."},
+{"n":9,"score":1,"fix":"right","quote":"`/menu/` 301 → `/cafe/` 301 → `/visit/` 200."},
+{"n":10,"score":1,"fix":"right","quote":"robots.txt blocks the site CSS ... `Disallow: /assets/css/`."},
+{"n":11,"score":1,"fix":"right","quote":"Sitemap contains a URL that returns 404 ... /coffee/sumatra-mandheling/ (listed in sitemap.xml) ... HTTP 404."},
+{"n":12,"score":1,"fix":"right","quote":"`/visit/` has no H1 ... The page has two H2s (\"Opening hours\", \"Menu\") and no H1."},
+{"n":13,"score":1,"fix":"right","quote":"Brewing guide has two H1s ... `<h1>Coffee brewing guide</h1>` and later `<h1>Brew methods</h1>`."},
+{"n":14,"score":1,"fix":"right","quote":"Homepage hero image has no alt text ... `<img src=\"/assets/img/hero-beans.jpg\" width=\"1200\" height=\"700\">` has no `alt`."},
+{"n":15,"score":1,"fix":"right","quote":"The hero image `/assets/img/roastery-hero.jpg` is 1,818,123 bytes (about 1.8MB) at 2400x1600"},
+{"n":16,"score":1,"fix":"right","quote":"The cold brew post is a single paragraph of about 80 words ... unlikely to beat established results"},
+{"n":17,"score":1,"fix":"right","quote":"The Product JSON-LD has no `name` property."},
+{"n":18,"score":1,"fix":"right","quote":"FAQPage schema on `/coffee/` is not matched by visible content ... the page has no visible FAQ section."},
+{"n":19,"score":1,"fix":"right","quote":"Two blog posts compete for the same query ... Both target \"pour over coffee\" for beginners."},
+{"n":20,"score":1,"fix":"right","quote":"\"2024\" baked into the best-beans article ... A dated title looks stale in 2026 and hurts click-through."}
+],
+"wrong_findings":[
+{"claim":"Meta descriptions are present, unique and specific on 15 of 17 pages.","why_wrong":"Only /about/ is missing one. 16 of 17 HTML pages have a meta description (crawl.csv)."},
+{"claim":"/coffee/ meta description is about 105 characters and all others are within the 150 to 160 range.","why_wrong":"/coffee/ is 96 characters (105 is the brewing guide). No page reaches 150: the others run from 77 to 129 characters (contact 77, blog 95, shop 95, brewing guide 105, ...)."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product schema."},
+{"finding":"The Product offers on Bali Kintamani and Java Ijen leave out the 1kg bag shown on the page."},
+{"finding":"sitemap.xml has no lastmod values."},
+{"finding":"/coffee/ and /shop/ are short, overlapping listing pages with no images or prices."},
+{"finding":"There is no LocalBusiness/CafeOrCoffeeShop schema on /visit/ or /contact/. The Organization schema has no telephone or sameAs."},
+{"finding":"The Article schema on the three blog posts has no image, publisher or mainEntityOfPage."},
+{"finding":"The Article headline on best-coffee-beans-2024 doesn't match its H1 and title."},
+{"finding":"There is no favicon (no file, no link rel=icon)."},
+{"finding":"No page has Open Graph or Twitter Card tags."},
+{"finding":"The blog index is a bare list of links with no dates or excerpts."},
+{"finding":"There are no breadcrumbs, and the footer has only a Contact link."},
+{"finding":"The cold-brew meta description is short (83 characters)."},
+{"finding":"/cart/ is disallowed in robots.txt but doesn't exist."}
+],
+"total_findings":34,
+"notes":"All 20 planted issues found with specific pages and correct fixes. There's no GEO advice and no promo content. One outdated statement in 3.3, not counted as a wrong finding: it says FAQ rich results are 'limited to a small set of sites', but Google stopped showing them in May 2026. The two wrong findings are small meta-description counting errors."}
+```

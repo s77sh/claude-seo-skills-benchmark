@@ -1,0 +1,46 @@
+I've checked the audit's claims against the HTML, crawl, robots.txt and sitemap. All of them hold up, so here is the grading.
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"/contact/: no canonical tag. Add <link rel=\"canonical\" href=\"https://kopikita.test/contact/\">."},
+{"n":2,"score":1,"fix":"right","quote":"<link rel=\"canonical\" href=\"https://kopikita.test/coffee/\"> on /shop/."},
+{"n":3,"score":1,"fix":"right","quote":"<meta name=\"robots\" content=\"noindex, follow\">. The page is also in sitemap.xml and the main nav."},
+{"n":4,"score":1,"fix":"right","quote":"/coffee/ and /subscriptions/ share the identical title \"Single-Origin Indonesian Coffee | Kopi Kita\"."},
+{"n":5,"score":1,"fix":"right","quote":"is about 88 characters, and Google will truncate it."},
+{"n":6,"score":1,"fix":"right","quote":"/about/: no meta description. Add one (~150 characters)."},
+{"n":7,"score":1,"fix":"right","quote":"/blog/how-to-brew-pour-over/ links to /coffee/aceh-gayo/, which returns 404."},
+{"n":8,"score":1,"fix":"right","quote":"/coffee/flores-bajawa/ is not linked from any page ... so it is reachable only through the sitemap."},
+{"n":9,"score":1,"fix":"right","quote":"/menu/ ... which redirects 301 to /cafe/, which redirects 301 to /visit/."},
+{"n":10,"score":1,"fix":"right","quote":"/robots.txt has Disallow: /assets/css/, and every page loads /assets/css/site.css."},
+{"n":11,"score":1,"fix":"right","quote":"/coffee/sumatra-mandheling/ returns 404."},
+{"n":12,"score":1,"fix":"right","quote":"/visit/: no <h1>. The page uses only <h2>s"},
+{"n":13,"score":1,"fix":"right","quote":"/coffee/brewing-guide/: two <h1> tags (\"Coffee brewing guide\" and \"Brew methods\")."},
+{"n":14,"score":1,"fix":"right","quote":"hero image /assets/img/hero-beans.jpg has no alt attribute."},
+{"n":15,"score":1,"fix":"right","quote":"/about/: /assets/img/roastery-hero.jpg is 1.8 MB at 2400x1600."},
+{"n":16,"score":1,"fix":"right","quote":"/blog/cold-brew-at-home/ ... One short paragraph (~80 words)"},
+{"n":17,"score":1,"fix":"right","quote":"The Kintamani Product JSON-LD has no name (required for Product rich results)."},
+{"n":18,"score":1,"fix":"right","quote":"FAQPage schema with two Q&As, but those questions are not visible anywhere on the page."},
+{"n":19,"score":1,"fix":"right","quote":"Both posts give the same recipe ... and target the same query (\"pour over coffee\")."},
+{"n":20,"score":1,"fix":"right","quote":"The slug, title and H1 say 2024. The schema says ... dateModified 2026-09-01."}
+],
+"wrong_findings":[],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"Sitemap entries have no <lastmod>"},
+{"finding":"Sitemap lists non-indexable URLs: /wholesale/ (noindex) and /shop/ (canonicalised)"},
+{"finding":"/coffee/flores-bajawa/ has no Product schema"},
+{"finding":"Article schema on the blog posts has no image or publisher; the cold brew post and brewing guide have no Article schema"},
+{"finding":"Organization schema is thin, and there is no LocalBusiness/CafeOrCoffeeShop schema on /visit/ or /contact/"},
+{"finding":"/visit/ meta description promises directions, but the page has none"},
+{"finding":"/coffee/ says 'three to five single origins' but links only two"},
+{"finding":"/blog/cold-brew-at-home/ is linked only from the blog index; /visit/ is linked directly only from /about/"},
+{"finding":"No Open Graph or Twitter card tags on any page"},
+{"finding":"Author is named only in JSON-LD; posts have no visible byline or dates"},
+{"finding":"No favicon declared (<link rel=icon>)"},
+{"finding":"robots.txt disallows /cart/, which returns 404; product pages have no add-to-cart"},
+{"finding":"The cold brew recipe is repeated on /coffee/brewing-guide/ and /blog/cold-brew-at-home/"}
+],
+"total_findings":35,
+"notes":"All 20 planted issues found with page and specific problem, and the fix advice is sound for each; no false site claims, no GEO advice and no unrequested promotion. One outdated statement: it says Google shows FAQ rich results 'only for a narrow set of authoritative sites' (Google stopped showing them in May 2026). That is about Google rather than the site, so it isn't listed as a wrong finding, and the llms.txt line correctly says Google ignores it."}
+```

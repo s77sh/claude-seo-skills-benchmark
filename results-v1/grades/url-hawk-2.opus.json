@@ -1,0 +1,44 @@
+I've checked the audit against the key, the HTML and the crawl, and I'm now writing up the grade.
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"Missing canonical on /contact/ ... Add `<link rel=\"canonical\" href=\"https://kopikita.test/contact/\">`."},
+{"n":2,"score":1,"fix":"right","quote":"/shop/ canonicalises to /coffee/, so the Shop page can't rank"},
+{"n":3,"score":1,"fix":"right","quote":"Wholesale page is `noindex` but is in the sitemap and the main nav"},
+{"n":4,"score":1,"fix":"right","quote":"Duplicate title: /subscriptions/ and /coffee/ both use \"Single-Origin Indonesian Coffee | Kopi Kita\"."},
+{"n":5,"score":1,"fix":"right","quote":"Overlong titles that will likely truncate in the SERP: /coffee/bali-kintamani/ ... is 87 characters."},
+{"n":6,"score":1,"fix":"right","quote":"/about/ has no meta description"},
+{"n":7,"score":1,"fix":"right","quote":"/coffee/aceh-gayo/ is linked from a blog post but returns 404 ... /blog/how-to-brew-pour-over/ (link \"Aceh Gayo\")"},
+{"n":8,"score":1,"fix":"right","quote":"Orphan page: /coffee/flores-bajawa/ ... It's in the sitemap but no page links to it."},
+{"n":9,"score":1,"fix":"right","quote":"Broken redirect chain on the nav link: /menu/ → /cafe/ → /visit/ ... takes two 301 hops"},
+{"n":10,"score":1,"fix":"right","quote":"robots.txt blocks the CSS directory ... (`Disallow: /assets/css/`)"},
+{"n":11,"score":1,"fix":"right","quote":"Sitemap lists a 404: /coffee/sumatra-mandheling/"},
+{"n":12,"score":1,"fix":"right","quote":"/visit/ ... has no `<h1>`, only two `<h2>`s (\"Opening hours\", \"Menu\")."},
+{"n":13,"score":1,"fix":"right","quote":"/coffee/brewing-guide/ has two `<h1>` elements (\"Coffee brewing guide\" and \"Brew methods\")."},
+{"n":14,"score":1,"fix":"right","quote":"Homepage hero image has no `alt` text ... (`/assets/img/hero-beans.jpg`)"},
+{"n":15,"score":1,"fix":"right","quote":"Oversized image on /about/ ... roastery-hero.jpg (1.8 MB, 2400×1600) ... hurts LCP"},
+{"n":16,"score":1,"fix":"right","quote":"Thin content: /blog/cold-brew-at-home/ ... The body is a single paragraph (about 80 words)"},
+{"n":17,"score":1,"fix":"right","quote":"/coffee/bali-kintamani/ (Product): has no `name`. Google requires `name` for Product rich results"},
+{"n":18,"score":1,"fix":"right","quote":"/coffee/ FAQPage ... the two questions also aren't visible on the page. Markup should match visible content"},
+{"n":19,"score":1,"fix":"right","quote":"Two blog posts compete for the same query: pour over"},
+{"n":20,"score":1,"fix":"right","quote":"Stale year in a URL and title ... the URL, title and H1 all say 2024."}
+],
+"wrong_findings":[
+{"claim":"17 HTML URLs are in the sitemap","why_wrong":"sitemap.xml lists 18 URLs (17 live pages plus /coffee/sumatra-mandheling/), and the crawl's In Sitemap column agrees."},
+{"claim":"The Kintamani title is 87 characters","why_wrong":"The title is 88 characters (crawl Title 1 Length = 88). This is off by one and doesn't change the finding."},
+{"claim":"The cold brew post is short 'compared with 400+ words for the other posts'","why_wrong":"Crawl word counts are 331 for best-coffee-beans-2024 and 367 for pour-over-coffee-guide. Only how-to-brew-pour-over (440) is over 400."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product JSON-LD, while the other two coffees do"},
+{"finding":"Neither Product offers block has a url"},
+{"finding":"The Article schema on the blog posts has no image or publisher"},
+{"finding":"The best-coffee-beans-2024 Article headline ('The best coffee beans in Bali') doesn't match its H1 ('... (2024 guide)')"},
+{"finding":"sitemap.xml has no <lastmod> values"},
+{"finding":"/visit/ gets only one direct internal link (from /about/), because the nav goes through /menu/"},
+{"finding":"/subscriptions/ is linked only from the nav"}
+],
+"total_findings":28,
+"notes":"All 20 planted issues were found with the right page and the right fix, and the audit avoided every decoy. The only errors are three small factual slips (counts and lengths). One more is outside the site: the audit says Google 'restricted FAQ rich results to government and health sites', but they were removed entirely in May 2026. Its conclusion about this page is still right."}
+```

@@ -1,0 +1,44 @@
+I've checked the audit's claims against the HTML, the sitemap, robots.txt and the crawl. Here is the grading.
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/` has no canonical tag ... Add `<link rel=\"canonical\" href=\"https://kopikita.test/contact/\">`."},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` canonicalises to `/coffee/` ... Fix: change the canonical to `https://kopikita.test/shop/`."},
+{"n":3,"score":1,"fix":"right","quote":"`/wholesale/` is `noindex` but is in the sitemap and main nav ... Fix: remove the noindex tag."},
+{"n":4,"score":1,"fix":"right","quote":"`/subscriptions/` has the same title tag as `/coffee/`: \"Single-Origin Indonesian Coffee | Kopi Kita\""},
+{"n":5,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/`: title is about 85 characters ... Google will truncate it at roughly 60."},
+{"n":6,"score":1,"fix":"right","quote":"`/about/`: no meta description. Google will invent one."},
+{"n":7,"score":1,"fix":"right","quote":"Broken internal link: `/coffee/aceh-gayo/` (404) ... the link sits in `/blog/how-to-brew-pour-over/`"},
+{"n":8,"score":1,"fix":"right","quote":"`/coffee/flores-bajawa/` ... have no internal links from the site ... reachable only through the sitemap."},
+{"n":9,"score":1,"fix":"right","quote":"Primary nav links to a redirect chain: `/menu/` → `/cafe/` → `/visit/` ... a two-hop 301 chain"},
+{"n":10,"score":1,"fix":"right","quote":"`robots.txt` blocks `/assets/css/` ... Google needs to fetch CSS to render pages"},
+{"n":11,"score":1,"fix":"right","quote":"Sitemap lists a URL that returns 404: `/coffee/sumatra-mandheling/`"},
+{"n":12,"score":1,"fix":"right","quote":"`/visit/` has no `<h1>` ... the page starts with `<h2>Opening hours</h2>`."},
+{"n":13,"score":1,"fix":"right","quote":"`/coffee/brewing-guide/` has two `<h1>` tags (\"Coffee brewing guide\" and \"Brew methods\")"},
+{"n":14,"score":1,"fix":"right","quote":"`/` (`/assets/img/hero-beans.jpg`): no `alt` attribute. It is the home page hero."},
+{"n":15,"score":1,"fix":"right","quote":"`/about/` (`/assets/img/roastery-hero.jpg`): the file is 1.8 MB at 2400×1600. This is a likely LCP/page-weight problem"},
+{"n":16,"score":1,"fix":"right","quote":"Thin content: `/blog/cold-brew-at-home/` (about 70 words) ... It can't compete for \"how to make cold brew\""},
+{"n":17,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/`: the `Product` has no `name`, a required field."},
+{"n":18,"score":1,"fix":"right","quote":"`FAQPage` schema on `/coffee/` doesn't match the visible page ... neither question is shown on the page."},
+{"n":19,"score":1,"fix":"right","quote":"Two blog posts compete for the same query: `/blog/how-to-brew-pour-over/` and `/blog/pour-over-coffee-guide/`"},
+{"n":20,"score":1,"fix":"right","quote":"`/blog/best-coffee-beans-2024/`: the URL, title tag and H1 say \"2024\" but `dateModified` is 2026-09-01."}
+],
+"wrong_findings":[
+{"claim":"The nav's /menu/ link affects \"21 URLs, sitewide\", and OG tags are missing on \"all 21 pages\"","why_wrong":"The site has 17 HTML pages, and the crawl shows /menu/ with 17 inlinks. The 21 includes 404s and redirects, which aren't pages. The page count is overstated."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"No LocalBusiness/CafeOrCoffeeShop schema, and the Organization schema has only name, url, logo and address"},
+{"finding":"/coffee/flores-bajawa/ has no Product schema"},
+{"finding":"Java Ijen Product name says \"250g\" while the page also sells 1kg; Offers have a single price and no url"},
+{"finding":"Article schema on the blog posts is missing image, publisher and mainEntityOfPage; /blog/cold-brew-at-home/ has no schema"},
+{"finding":"Schema headline on /blog/best-coffee-beans-2024/ doesn't match its H1"},
+{"finding":"No Open Graph or Twitter Card tags on any page"},
+{"finding":"Sitemap has no lastmod values"},
+{"finding":"/coffee/sumatra-mandheling/ also has no internal links"},
+{"finding":"Server issues: no security, caching or compression headers, default 404 page, /favicon.ico returns 404 (marked as local-server checks to confirm on production)"}
+],
+"total_findings":32,
+"notes":"The audit found all 20 planted issues with the right page and good fixes, and it raised no false alarms on the decoys. Item 13 says Google 'limits FAQ rich results to a small set of authoritative sites'; that is out of date (they stopped showing in May 2026) but isn't a false claim about the site, and the audit doesn't recommend FAQ schema for rich results."}
+```

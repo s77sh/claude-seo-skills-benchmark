@@ -1,0 +1,49 @@
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/` has **no canonical tag** (the only page missing one). Add a self-referencing canonical"},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` has `rel=canonical` pointing at `https://kopikita.test/coffee/`."},
+{"n":3,"score":1,"fix":"right","quote":"`/wholesale/` is `noindex` but linked sitewide and listed in the sitemap"},
+{"n":4,"score":1,"fix":"right","quote":"`/subscriptions/` has the title \"Single-Origin Indonesian Coffee | Kopi Kita\", which is an exact duplicate of `/coffee/`."},
+{"n":5,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/` has an 88-character title ... that Google will truncate"},
+{"n":6,"score":1,"fix":"right","quote":"`/about/` has **no meta description** (crawl: length 0)."},
+{"n":7,"score":1,"fix":"right","quote":"`/coffee/aceh-gayo/` | Returns 404. It is linked from `/blog/how-to-brew-pour-over/`"},
+{"n":8,"score":1,"fix":"right","quote":"`/coffee/flores-bajawa/` has 0 inlinks in the crawl and is only reachable through the sitemap."},
+{"n":9,"score":1,"fix":"right","quote":"`/menu/` returns 301 to `/cafe/`, which returns 301 to `/visit/`... this is a two-hop chain"},
+{"n":10,"score":1,"fix":"right","quote":"`/robots.txt` contains `Disallow: /assets/css/`. The crawl shows `site.css` as \"Blocked by robots.txt\""},
+{"n":11,"score":1,"fix":"right","quote":"`/coffee/sumatra-mandheling/` | Returns 404 but is listed in `sitemap.xml`"},
+{"n":12,"score":1,"fix":"right","quote":"`/visit/` has no `<h1>` (the crawl shows it blank; the page opens with an `<h2>Opening hours</h2>`)"},
+{"n":13,"score":1,"fix":"right","quote":"`/coffee/brewing-guide/` has `<h1>Coffee brewing guide</h1>` and `<h1>Brew methods</h1>`."},
+{"n":14,"score":1,"fix":"right","quote":"`/assets/img/hero-beans.jpg` on `/` has **no alt attribute** (the crawl shows \"(missing)\")."},
+{"n":15,"score":1,"fix":"right","quote":"`/assets/img/roastery-hero.jpg` is 1,818,123 bytes (2400×1600)... first image on `/about/`"},
+{"n":16,"score":1,"fix":"right","quote":"Cold brew article is thin and invisible ... `/blog/cold-brew-at-home/` (67 words, one paragraph; 1 inlink)."},
+{"n":17,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/` | `Product` has no `name` (required)"},
+{"n":18,"score":1,"fix":"right","quote":"`FAQPage` markup: the page does not show these questions... Markup must reflect visible content."},
+{"n":19,"score":1,"fix":"right","quote":"Two near-identical pour over articles compete against each other"},
+{"n":20,"score":1,"fix":"right","quote":"`/blog/best-coffee-beans-2024/`: the URL, title and H1 all say 2024."}
+],
+"wrong_findings":[
+{"claim":"FAQ rich results are also limited to a few authoritative site types, so this markup is unlikely to produce anything.","why_wrong":"This is out of date. Google stopped showing FAQ rich results entirely in May 2026; they aren't just limited to some sites."},
+{"claim":"/visit/ has ... no address on the page body","why_wrong":"Minor. The /visit/ body says the cafe is 'on Jalan Raya Sayan, ten minutes from central Ubud'. A partial address is there, just not the full one."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product JSON-LD"},
+{"finding":"The sitemap lists non-indexable URLs: /shop/ (canonicalised) and /wholesale/ (noindex)"},
+{"finding":"/visit/ has no LocalBusiness/CafeOrCoffeeShop schema, and only 2 real inlinks"},
+{"finding":"The Article schema headline on the best-beans post doesn't match its H1"},
+{"finding":"Article schema has no image or publisher; the cold brew post has no Article schema at all"},
+{"finding":"Organization schema has no sameAs, contactPoint or telephone"},
+{"finding":"The Product offers on Kintamani and Ijen have no url or sku"},
+{"finding":"/contact/ meta description is short (77 characters)"},
+{"finding":"/coffee/ is thin (102 words) and doesn't list Flores"},
+{"finding":"The grind size chart on the brewing guide is a paragraph, not a table; its cold brew line has no link"},
+{"finding":"No Open Graph tags, no favicon and no breadcrumbs anywhere on the site"},
+{"finding":"Article pages show no visible byline or date"},
+{"finding":"The contact page has a placeholder phone number (+62 812 0000 0000)"},
+{"finding":"robots.txt has Disallow: /cart/ for a path that doesn't exist"},
+{"finding":"The best-beans post has only 1 inlink"}
+],
+"total_findings":42,
+"notes":"Full recall: all 20 planted issues found with the right page and the specific problem, and all fix advice is right. No GEO advice or promo additions; the only errors are an out-of-date FAQ rich-results claim and a slight overstatement about the /visit/ address. GSC-based claims couldn't be checked because gsc.csv wasn't provided."}
+```

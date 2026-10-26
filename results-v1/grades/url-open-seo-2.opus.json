@@ -1,0 +1,42 @@
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"https://kopikita.test/contact/ (no canonical)"},
+{"n":2,"score":1,"fix":"right","quote":"Shop page declares /coffee/ as its canonical ... `<link rel=\"canonical\" href=\"https://kopikita.test/coffee/\">`"},
+{"n":3,"score":1,"fix":"right","quote":"Wholesale page is set to noindex ... The same page is in the sitemap, linked from the main navigation"},
+{"n":4,"score":1,"fix":"right","quote":"Title is \"Single-Origin Indonesian Coffee | Kopi Kita\", identical to /coffee/."},
+{"n":5,"score":1,"fix":"right","quote":"Bali Kintamani title is 83 characters (...). It will be truncated."},
+{"n":6,"score":1,"fix":"right","quote":"https://kopikita.test/about/ (no meta description)"},
+{"n":7,"score":1,"fix":"right","quote":"/blog/how-to-brew-pour-over/ links to https://kopikita.test/coffee/aceh-gayo/ (404)."},
+{"n":8,"score":1,"fix":"right","quote":"Flores Bajawa ... Linked only from the sitemap. ... Pages with no internal links are discovered late"},
+{"n":9,"score":1,"fix":"right","quote":"points to /menu/, which 301s to /cafe/, which 301s to /visit/."},
+{"n":10,"score":1,"fix":"right","quote":"robots.txt blocks CSS ... `Disallow: /assets/css/`."},
+{"n":11,"score":1,"fix":"right","quote":"Sitemap lists a page that returns 404 ... /coffee/sumatra-mandheling/"},
+{"n":12,"score":1,"fix":"right","quote":"/visit/ has no `<h1>`; the page starts at `<h2>Opening hours</h2>`."},
+{"n":13,"score":1,"fix":"right","quote":"/coffee/brewing-guide/ has two `<h1>` elements (\"Coffee brewing guide\" and \"Brew methods\")."},
+{"n":14,"score":1,"fix":"right","quote":"Home hero image `/assets/img/hero-beans.jpg` has no `alt` text."},
+{"n":15,"score":1,"fix":"right","quote":"`/assets/img/roastery-hero.jpg` on /about/ is 1.8 MB and 2400 px wide. Compress it"},
+{"n":16,"score":1,"fix":"right","quote":"Cold brew post is thin ... About 80 words in a single paragraph"},
+{"n":17,"score":1,"fix":"right","quote":"Bali Kintamani Product schema has no `name`. Add it"},
+{"n":18,"score":1,"fix":"right","quote":"/coffee/ has FAQPage schema, but the FAQ is not visible on the page."},
+{"n":19,"score":1,"fix":"right","quote":"Two pour over posts target the same query ... compete for \"how to make pour over coffee\" searches."},
+{"n":20,"score":1,"fix":"right","quote":"stale year in the URL and title ... Slug, title and H1 say 2024, but `dateModified` is 2026-09-01"}
+],
+"wrong_findings":[
+{"claim":"Bali Kintamani title is 83 characters","why_wrong":"The title is 88 characters (crawl.csv Title 1 Length = 88). The issue is real, but the number is wrong."},
+{"claim":"Google now shows FAQ rich results only for a few types of site","why_wrong":"Outdated: Google stopped showing FAQ rich results in May 2026, so they no longer show for any site."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product schema, while Kintamani and Ijen do"},
+{"finding":"No page has Open Graph or Twitter Card tags"},
+{"finding":"sitemap.xml has no <lastmod> dates"},
+{"finding":"/blog/ index and the cold brew post have no Article or ItemList markup"},
+{"finding":"The best-beans Article schema headline leaves out the year, so it doesn't match the H1"},
+{"finding":"The best-beans post sends washed-coffee buyers to 'any good local roaster'"},
+{"finding":"Blog posts recommend a grinder, scale and V60 but don't link to /shop/, which sells them (nav link aside)"},
+{"finding":"/coffee/ meta description mentions Flores, but the page doesn't link to the Flores product"},
+{"finding":"/coffee/brewing-guide/ repeats the same pour over recipe as the two posts"},
+{"finding":"Home page has only Organization schema; no LocalBusiness/CafeOrCoffeeShop markup for the Ubud cafe"}
+],
+"total_findings":36,
+"notes":"All 20 planted issues found with a specific page and correct fix advice. The only false claims are a wrong title length (83 vs 88) and an outdated statement about FAQ rich results. No GEO advice or promo additions. The Python 404 page claim could not be checked from the static files and was not counted."}

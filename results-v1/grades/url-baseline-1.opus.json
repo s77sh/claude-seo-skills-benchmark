@@ -1,0 +1,47 @@
+I've checked the audit's claims against the HTML and crawl, and I'm writing up the scores now.
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"Missing canonical tag - URL: https://kopikita.test/contact/ ... Add <link rel=\"canonical\" href=\"https://kopikita.test/contact/\">"},
+{"n":2,"score":1,"fix":"right","quote":"/shop/ canonicalises to /coffee/ (the page deindexes itself)"},
+{"n":3,"score":1,"fix":"right","quote":"/wholesale/ is set to noindex but linked everywhere and in the sitemap"},
+{"n":4,"score":1,"fix":"right","quote":"https://kopikita.test/coffee/ and https://kopikita.test/subscriptions/ ... Both use `Single-Origin Indonesian Coffee | Kopi Kita`."},
+{"n":5,"score":1,"fix":"right","quote":"https://kopikita.test/coffee/bali-kintamani/ (title ~95 characters ... will be truncated in results)"},
+{"n":6,"score":1,"fix":"right","quote":"Missing meta description - URL: https://kopikita.test/about/"},
+{"n":7,"score":1,"fix":"right","quote":"https://kopikita.test/blog/how-to-brew-pour-over/ (link target: /coffee/aceh-gayo/, 404)"},
+{"n":8,"score":1,"fix":"right","quote":"Flores Bajawa is linked from nowhere except the sitemap (an orphan for crawl purposes"},
+{"n":9,"score":1,"fix":"right","quote":"/menu/ (linked in the main nav on every page) → 301 → /cafe/ → 301 → /visit/"},
+{"n":10,"score":1,"fix":"right","quote":"robots.txt blocks the CSS directory ... (`Disallow: /assets/css/`)"},
+{"n":11,"score":1,"fix":"right","quote":"Sitemap URL /coffee/sumatra-mandheling/ returns 404"},
+{"n":12,"score":1,"fix":"right","quote":"Heading structure on /visit/ has no H1"},
+{"n":13,"score":1,"fix":"right","quote":"Multiple H1s on the brewing guide ... `<h1>Coffee brewing guide</h1>` and a second `<h1>Brew methods</h1>`"},
+{"n":14,"score":1,"fix":"right","quote":"Home page hero image has no alt text - URL: https://kopikita.test/ (`/assets/img/hero-beans.jpg`)"},
+{"n":15,"score":1,"fix":"right","quote":"Hero image on /about/ is 1.8 MB ... it is far too heavy"},
+{"n":16,"score":1,"fix":"right","quote":"the cold brew post is too thin to rank for a competitive query"},
+{"n":17,"score":1,"fix":"right","quote":"Kintamani Product JSON-LD has no `name` property (required by Google)."},
+{"n":18,"score":1,"fix":"right","quote":"FAQPage markup on /coffee/ with no visible FAQ"},
+{"n":19,"score":1,"fix":"right","quote":"Keyword cannibalisation: two near-identical pour over posts ... compete with each other for the same queries"},
+{"n":20,"score":1,"fix":"right","quote":"URL, `<title>` and H1 say \"2024\" ... now almost three years out of date"}
+],
+"wrong_findings":[
+{"claim":"Kintamani title is ~95 characters","why_wrong":"The title is 88 characters (crawl.csv Title 1 Length = 88; the HTML string is 88 chars). It is still too long, but the number is wrong."},
+{"claim":"Google now shows FAQ rich results only for a few authoritative sites","why_wrong":"Google stopped showing FAQ rich results entirely in May 2026, so the reason given is out of date. The finding itself still counts for issue 18."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product structured data although it is a product page with prices"},
+{"finding":"Java Ijen Product offer marks up only the 250g price; the page also sells 1kg (same for Kintamani)"},
+{"finding":"/blog/cold-brew-at-home/ is the only post with no Article schema, author or date"},
+{"finding":"best-coffee-beans-2024 JSON-LD headline has no year and doesn't match the H1"},
+{"finding":"The two pour over posts don't link to each other"},
+{"finding":"/shop/ and /coffee/ don't list or link to Flores Bajawa; /coffee/ describes only two of the three coffees"},
+{"finding":"Brewing guide and blog posts use bold paragraph lead-ins instead of H2/H3 subheadings"},
+{"finding":"sitemap.xml has no <lastmod> values"},
+{"finding":"No Open Graph, Twitter card or favicon tags in the head"},
+{"finding":"Organization JSON-LD has no sameAs or contactPoint, and there is no LocalBusiness/CafeOrCoffeeShop markup for the cafe"},
+{"finding":"No custom 404 page; the default server page is served (could be a local dev-server artefact)"}
+],
+"total_findings":35,
+"notes":"All 20 planted issues found with specific pages, and the fix advice is right for every one (recall 20/20). The only errors are two minor wrong facts (88-char title reported as ~95, and an out-of-date description of FAQ rich results). No GEO advice and no promo content."}
+```

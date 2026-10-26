@@ -1,0 +1,45 @@
+I've checked the audit's claims against the HTML and the server behaviour file and finished scoring.
+
+```json
+{"issues":[
+{"n":1,"score":0,"quote":"The audit never mentions X-Robots-Tag or that /subscriptions/ is noindexed; it calls /subscriptions/ only \"short (roughly 80 to 100 words)\""},
+{"n":2,"score":1,"fix":"right","quote":"its <link rel=\"canonical\"> is https://kopikita.test/coffee/ijen/. That URL returns 301 → /coffee/java-ijen/."},
+{"n":3,"score":1,"fix":"right","quote":"HTTP 200 with <title>Page not found | Kopi Kita</title>... a 200 on an error page is a soft 404."},
+{"n":4,"score":1,"fix":"right","quote":"/coffee/kintamani/ → 302 /coffee/bali-kintamani/... Change the 302 to a 301 if the move is permanent."},
+{"n":5,"score":1,"fix":"right","quote":"/id/ declares hreflang=\"in\", which is the retired language code, so use id... the pair is not reciprocal."},
+{"n":6,"score":1,"fix":"right","quote":"the raw HTML has an empty <div id=\"product-description\"></div>. All body copy is written by innerHTML"},
+{"n":7,"score":1,"fix":"right","quote":"Wholesale is rel=\"nofollow\" in the site nav... Fix: remove rel=\"nofollow\"."},
+{"n":8,"score":1,"fix":"right","quote":"JSON-LD offers.price is 145000. The page text says \"Rp 165,000 for 250g\"."},
+{"n":9,"score":1,"fix":"right","quote":"the script ends ... \"Wayan Sudarma\"},}. The trailing comma makes it invalid JSON"},
+{"n":10,"score":1,"fix":"right","quote":"URL: / (hero-beans.jpg, loading=\"lazy\")... it is almost certainly the LCP element"},
+{"n":11,"score":1,"fix":"right","quote":"/visit/ has no viewport meta tag"},
+{"n":12,"score":1,"fix":"right","quote":"/blog/page/2/. Its canonical points to /blog/... Use a self-referencing canonical for each paginated page"},
+{"n":13,"score":1,"fix":"right","quote":"/coffee/samples/ is in the sitemap but blocked by Disallow: /coffee/samples/ in robots.txt."},
+{"n":14,"score":1,"fix":"right","quote":"every URL has <lastmod>2027-03-01</lastmod>. Today is 2026-10-22."},
+{"n":15,"score":1,"fix":"right","quote":"Near-duplicate product pages: Kintamani 250g and 1kg... near-identical body copy... canonicalise 1kg to the 250g page"},
+{"n":16,"score":1,"fix":"right","quote":"its description is \"Washed coffee from the Ijen plateau, East Java...\". That is the Java Ijen text."},
+{"n":17,"score":1,"fix":"right","quote":"three farm images use data-src and are only set to src by a JS IntersectionObserver. The raw HTML has no src."},
+{"n":18,"score":0,"quote":"/coffee/limited-release/ and the onclick button on /coffee/ are never mentioned"},
+{"n":19,"score":1,"fix":"right","quote":"Linked from: the home page (best-seller link), /blog/best-coffee-beans-bali/... change those internal links to /coffee/bali-kintamani/"},
+{"n":20,"score":1,"fix":"right","quote":"<img src=\"http://kopikita.test/assets/img/storefront.jpg\"> and <iframe src=\"http://maps.example.com/embed?...\">"}
+],
+"wrong_findings":[],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/blog/page/2/ is listed in the sitemap even though it canonicalises to /blog/"},
+{"finding":"/coffee/flores-bajawa/ and /coffee/gift-box/ have no Product schema"},
+{"finding":"Flores Bajawa gets only one body link (from the pour-over post), so it is nearly orphaned"},
+{"finding":"/coffee/samples/ has no internal links and can only be found through the sitemap"},
+{"finding":"/blog/cold-brew-at-home/ is linked only from /blog/page/2/"},
+{"finding":"/id/ has its nav and footer in English"},
+{"finding":"The 1kg and 250g Kintamani pages share an identical meta description"},
+{"finding":"No page has Open Graph or Twitter card tags"},
+{"finding":"The /about/ title is the only one without the '| Kopi Kita' suffix"},
+{"finding":"The Article schema headline differs from the H1 on best-coffee-beans-bali"},
+{"finding":"The footer links only to Contact"},
+{"finding":"The Article schema on both posts has no image"}
+],
+"total_findings":36,
+"notes":"18 of 20. The audit missed the X-Robots-Tag noindex on /subscriptions/ (header-only) and the button-only link to /coffee/limited-release/, which its crawl never found. Every claim I checked against the HTML and server-behaviour.txt held up, and it has no GEO advice and no promo content."}
+```

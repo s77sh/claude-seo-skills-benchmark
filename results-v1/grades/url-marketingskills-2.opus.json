@@ -1,0 +1,50 @@
+I've read the key, the audit, the crawl and the relevant HTML pages, and I'm writing up the scores now.
+
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"URL `/contact/`: has a title and description but **no canonical** tag."},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` canonicalises to `/coffee/` ... `<link rel=\"canonical\" href=\"https://kopikita.test/coffee/\">`"},
+{"n":3,"score":1,"fix":"right","quote":"`/wholesale/` is `noindex` but sits in the sitemap and is the B2B lead page."},
+{"n":4,"score":1,"fix":"right","quote":"The `<title>` is `Single-Origin Indonesian Coffee | Kopi Kita`, identical to `/coffee/`."},
+{"n":5,"score":1,"fix":"right","quote":"Over-long title tag on the Kintamani product page ... is about 90 characters."},
+{"n":6,"score":1,"fix":"right","quote":"URL `/about/`: has a title and canonical but **no meta description**."},
+{"n":7,"score":1,"fix":"right","quote":"The pour-over post links to a 404 (`/coffee/aceh-gayo/`)."},
+{"n":8,"score":1,"fix":"right","quote":"`/coffee/flores-bajawa/` is in the sitemap but no page on the site links to it."},
+{"n":9,"score":1,"fix":"right","quote":"`/menu/` returns 301 to `/cafe/`, which returns 301 to `/visit/`."},
+{"n":10,"score":1,"fix":"right","quote":"Blocking CSS stops Google from rendering the pages properly"},
+{"n":11,"score":1,"fix":"right","quote":"The sitemap lists a 404 (`/coffee/sumatra-mandheling/`)."},
+{"n":12,"score":1,"fix":"right","quote":"`/visit/`: **no H1**, only H2s (\"Opening hours\", \"Menu\")."},
+{"n":13,"score":1,"fix":"right","quote":"`/coffee/brewing-guide/`: two H1 tags (\"Coffee brewing guide\" and \"Brew methods\")."},
+{"n":14,"score":1,"fix":"right","quote":"Homepage hero image has no alt text ... `/assets/img/hero-beans.jpg`"},
+{"n":15,"score":1,"fix":"right","quote":"Oversized image on `/about/` ... 1.8 MB, 2400×1600 JPEG."},
+{"n":16,"score":1,"fix":"right","quote":"`/blog/cold-brew-at-home/`: one short paragraph (about 60 words); no headings"},
+{"n":17,"score":1,"fix":"right","quote":"Kintamani `Product` JSON-LD has **no `name`** property (a required field)"},
+{"n":18,"score":1,"fix":"right","quote":"the page source contains a `FAQPage` with two questions ... but the visible page content has no FAQ section."},
+{"n":19,"score":1,"fix":"right","quote":"Two pour-over articles target the same query (cannibalisation)"},
+{"n":20,"score":1,"fix":"right","quote":"the URL, title and H1 say 2024, but the page was modified 2026-09-01"}
+],
+"wrong_findings":[
+{"claim":"/subscriptions/ canonicalises to /coffee/ (`<link rel=\"canonical\" href=\"https://kopikita.test/coffee/\">`) and will likely be dropped from the index","why_wrong":"/subscriptions/ has a self-referencing canonical (https://kopikita.test/subscriptions/) in the HTML and in the crawl; only the title is duplicated."},
+{"claim":"/shop/ is 'one sentence with two links, about 20 words of body copy'","why_wrong":"/shop/ has five paragraphs and 86 words in the crawl, covering coffee, gear, drip bags and shipping."},
+{"claim":"Kintamani schema price 145000 'but I could not see the price in the visible page text'","why_wrong":"The page text says 'Rp 145,000 for 250g. Rp 520,000 for 1kg.', which matches the markup."},
+{"claim":"Java Ijen Product schema is listed under 'Product schema is incomplete or invalid'","why_wrong":"Java Ijen is a decoy. Its Product schema is valid (it has name, image and offers). sku, offer url and priceValidUntil are optional."},
+{"claim":"'Google now shows FAQ rich results only for a few authoritative sites'","why_wrong":"Google stopped showing FAQ rich results entirely in May 2026."},
+{"claim":"'/about/ and /contact/ are in the nav and the footer'","why_wrong":"The footer only links to /contact/. /about/ is linked from the nav only."},
+{"claim":"Quick wins include 'add the missing title and description tags'","why_wrong":"Every page has a title (crawl Title 1 is filled for all HTML pages). Only /about/ is missing a description."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product schema even though a price is shown on the page"},
+{"finding":"/coffee/ category page lists only two of the three coffees (Flores is missing)"},
+{"finding":"/coffee/brewing-guide/ uses bold paragraph labels instead of H2/H3 headings for its sections"},
+{"finding":"Sitemap has no lastmod values"},
+{"finding":"robots.txt Disallow: /cart/ points at a path that doesn't exist"},
+{"finding":"Article schema has no image, publisher or mainEntityOfPage; the cold brew post has no Article schema"},
+{"finding":"No visible byline or date on blog posts, and no author page"},
+{"finding":"best-coffee-beans-2024 recommends other roasters ('a washed Kintamani from any good local roaster'), and its schema headline leaves out the year"},
+{"finding":"Organization schema has no telephone, opening hours, geo or sameAs, though a physical cafe exists"},
+{"finding":"Cold brew post repeats the recipe already on /coffee/brewing-guide/"},
+{"finding":"No privacy policy or shipping/returns pages are linked"}
+],
+"total_findings":42,
+"notes":"The audit finds all 20 planted issues with the right page and gives sound fixes. Its main false claims are the /subscriptions/ canonical (it is self-referencing), the /shop/ word count, the 'invisible' Kintamani price, and flagging the healthy Java Ijen decoy. It has no GEO advice and no promo content."}

@@ -1,0 +1,15 @@
+{
+ "cost_usd": 0.2586345,
+ "turns": 14,
+ "duration_s": 77.918,
+ "skills_loaded": [
+  "technical-seo-audit"
+ ],
+ "tools": {
+  "Skill": 1,
+  "Bash": 10,
+  "Write": 1
+ },
+ "denials": 3,
+ "subtype": "success"
+}

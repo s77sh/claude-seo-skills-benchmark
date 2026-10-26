@@ -1,0 +1,15 @@
+{
+ "cost_usd": 0.47683880000000006,
+ "turns": 16,
+ "duration_s": 148.353,
+ "skills_loaded": [],
+ "tools": {
+  "Bash": 9,
+  "Grep": 1,
+  "Read": 1,
+  "Write": 2,
+  "Edit": 2
+ },
+ "denials": 6,
+ "subtype": "success"
+}

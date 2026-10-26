@@ -1,0 +1,53 @@
+I've verified the audit's claims against the HTML, robots.txt, sitemap and crawl. Here is the grading.
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/`: no canonical tag (all other pages have one)."},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` canonicalises to `/coffee/` ... Set the canonical to `https://kopikita.test/shop/`."},
+{"n":3,"score":1,"fix":"right","quote":"The wholesale page is `noindex` but is in the sitemap and main nav"},
+{"n":4,"score":1,"fix":"right","quote":"`/coffee/` and `/subscriptions/` both use `Single-Origin Indonesian Coffee | Kopi Kita`"},
+{"n":5,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/` is about 88 characters ... and will be truncated."},
+{"n":6,"score":1,"fix":"right","quote":"`/about/`: no meta description (Google will pick arbitrary text)."},
+{"n":7,"score":1,"fix":"right","quote":"`/blog/how-to-brew-pour-over/` links to `/coffee/aceh-gayo/` (404)."},
+{"n":8,"score":1,"fix":"right","quote":"Flores Bajawa is only in the sitemap and gets no contextual links ... An orphan-like product page"},
+{"n":9,"score":1,"fix":"right","quote":"`/menu/` → 301 `/cafe/` → 301 `/visit/` (final 200). This link is on every page."},
+{"n":10,"score":1,"fix":"right","quote":"`/robots.txt` has `Disallow: /assets/css/` ... Blocking CSS stops Googlebot rendering pages"},
+{"n":11,"score":1,"fix":"right","quote":"`/coffee/sumatra-mandheling/` (404; listed in sitemap.xml)"},
+{"n":12,"score":1,"fix":"right","quote":"Visit page has no H1 ... The page begins at `<h2>Opening hours</h2>`"},
+{"n":13,"score":1,"fix":"right","quote":"`/coffee/brewing-guide/`: `<h1>Coffee brewing guide</h1>` and `<h1>Brew methods</h1>`."},
+{"n":14,"score":1,"fix":"right","quote":"`/assets/img/hero-beans.jpg` has **no `alt` attribute**"},
+{"n":15,"score":1,"fix":"right","quote":"`/assets/img/roastery-hero.jpg` is **1.8 MB** and 2400×1600."},
+{"n":16,"score":1,"fix":"right","quote":"`/blog/cold-brew-at-home/`: about 70 words in one paragraph ... Expand into a proper guide"},
+{"n":17,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/`: the Product JSON-LD has no `name`. That is a required property"},
+{"n":18,"score":1,"fix":"right","quote":"FAQPage schema without visible FAQ content ... The page has no visible Q&A section."},
+{"n":19,"score":1,"fix":"right","quote":"`/blog/how-to-brew-pour-over/` and `/blog/pour-over-coffee-guide/` ... Both target \"pour over coffee\""},
+{"n":20,"score":1,"fix":"right","quote":"A \"2024\" label looks stale in 2026 and hurts CTR."}
+],
+"wrong_findings":[
+{"claim":"All 19 URLs were fetched: the 17 in the sitemap plus /menu/ and /cafe/","why_wrong":"sitemap.xml lists 18 URLs, not 17 (so 20 URLs in total, plus the 404 /coffee/aceh-gayo/)."}
+],
+"geo_advice":[
+{"advice":"Optionally add llms.txt","quote":"**Fix:** Optionally add `llms.txt`."},
+{"advice":"Restructure guides with question-style H2s and answer-first passages for AI search","quote":"put question-style H2s on guides (\"What ratio should I use for pour over?\") with a direct answer first."}
+],
+"unrequested":[],
+"extra_true":[
+{"finding":"The sitemap has no <lastmod> on any URL"},
+{"finding":"The sitemap lists /shop/, which is canonicalised to another page"},
+{"finding":"/coffee/sumatra-mandheling/ (the 404 in the sitemap) has no internal links"},
+{"finding":"/coffee/flores-bajawa/ has no Product schema"},
+{"finding":"/blog/cold-brew-at-home/ has no Article schema"},
+{"finding":"Article schema on the blog posts has no image, publisher or mainEntityOfPage"},
+{"finding":"There is no LocalBusiness/CafeOrCoffeeShop schema, and opening hours appear only in prose; /visit/ and /contact/ have no schema"},
+{"finding":"The best-beans post's H1 and schema headline differ from its title"},
+{"finding":"The brewing guide uses bold run-in labels where it should use subheadings"},
+{"finding":"The about hero has no srcset"},
+{"finding":"robots.txt disallows /cart/, which doesn't exist"},
+{"finding":"The cold brew post repeats the cold brew recipe in the brewing guide"},
+{"finding":"No page has Open Graph or Twitter Card tags"},
+{"finding":"The footer links only to Contact, and blog posts don't link to each other"},
+{"finding":"The author is named in schema, but posts show no visible byline or author page"}
+],
+"total_findings":38,
+"notes":"The audit found all 20 planted issues, each on the right page with the specific problem and the right fix. It didn't flag any of the decoys. Outside the site-only rules, issue 13 gets a Google fact wrong: it says FAQ rich results are limited to government and health sites, but Google stopped showing them in May 2026. The issue still scores 1 because the audit names the missing visible FAQ content."}
+```

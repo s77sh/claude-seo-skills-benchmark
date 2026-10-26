@@ -1,0 +1,465 @@
+[
+ {
+  "run": "baseline-1",
+  "cost": 0.48,
+  "min": 2.5,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 2,
+   "geo": 0,
+   "unreq": 0,
+   "total": 42
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 1,
+   "geo": 0,
+   "unreq": 0,
+   "total": 40
+  },
+  "disagree": []
+ },
+ {
+  "run": "claude-seo-1",
+  "cost": 0.47,
+  "min": 2.2,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 1,
+   "geo": 1,
+   "unreq": 0,
+   "total": 40
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 2,
+   "geo": 3,
+   "unreq": 0,
+   "total": 40
+  },
+  "disagree": []
+ },
+ {
+  "run": "hawk-1",
+  "cost": 0.33,
+  "min": 1.9,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 1,
+   "geo": 0,
+   "unreq": 0,
+   "total": 30
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 5,
+   "geo": 0,
+   "unreq": 0,
+   "total": 36
+  },
+  "disagree": []
+ },
+ {
+  "run": "marketingskills-1",
+  "cost": 0.43,
+  "min": 2.3,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 4,
+   "geo": 0,
+   "unreq": 0,
+   "total": 36
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 0,
+   "geo": 0,
+   "unreq": 0,
+   "total": 22
+  },
+  "disagree": []
+ },
+ {
+  "run": "open-seo-1",
+  "cost": 0.35,
+  "min": 1.8,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 3,
+   "geo": 0,
+   "unreq": 0,
+   "total": 38
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 4,
+   "geo": 0,
+   "unreq": 0,
+   "total": 31
+  },
+  "disagree": []
+ },
+ {
+  "run": "seranking-1",
+  "cost": 0.49,
+  "min": 2.1,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 3,
+   "geo": 0,
+   "unreq": 0,
+   "total": 40
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 0,
+   "geo": 0,
+   "unreq": 0,
+   "total": 25
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-baseline-1",
+  "cost": 0.3,
+  "min": 1.5,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 2,
+   "geo": 0,
+   "unreq": 0,
+   "total": 35
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 2,
+   "geo": 0,
+   "unreq": 0,
+   "total": 25
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-baseline-2",
+  "cost": 0.3,
+  "min": 1.4,
+  "opus": {
+   "recall": 19,
+   "P": 11,
+   "S": 8,
+   "wrong": 3,
+   "geo": 0,
+   "unreq": 0,
+   "total": 32
+  },
+  "codex": {
+   "recall": 19,
+   "P": 11,
+   "S": 8,
+   "wrong": 2,
+   "geo": 0,
+   "unreq": 0,
+   "total": 33
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-claude-seo-1",
+  "cost": 0.39,
+  "min": 1.6,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 1,
+   "geo": 2,
+   "unreq": 0,
+   "total": 38
+  },
+  "codex": {
+   "recall": 18.5,
+   "P": 12,
+   "S": 6.5,
+   "wrong": 2,
+   "geo": 2,
+   "unreq": 0,
+   "total": 26
+  },
+  "disagree": [
+   9,
+   19
+  ]
+ },
+ {
+  "run": "url-claude-seo-2",
+  "cost": 0.41,
+  "min": 1.5,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 0,
+   "geo": 0,
+   "unreq": 0,
+   "total": 35
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 0,
+   "geo": 0,
+   "unreq": 0,
+   "total": 24
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-claude-seo-router-1",
+  "cost": 0.38,
+  "min": 1.5,
+  "opus": {
+   "recall": 19,
+   "P": 11,
+   "S": 8,
+   "wrong": 2,
+   "geo": 1,
+   "unreq": 0,
+   "total": 36
+  },
+  "codex": {
+   "recall": 19,
+   "P": 11,
+   "S": 8,
+   "wrong": 3,
+   "geo": 1,
+   "unreq": 0,
+   "total": 28
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-hawk-1",
+  "cost": 0.26,
+  "min": 1.3,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 2,
+   "geo": 0,
+   "unreq": 0,
+   "total": 30
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 0,
+   "geo": 0,
+   "unreq": 0,
+   "total": 32
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-hawk-2",
+  "cost": 0.39,
+  "min": 1.6,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 3,
+   "geo": 0,
+   "unreq": 0,
+   "total": 28
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 0,
+   "geo": 0,
+   "unreq": 0,
+   "total": 32
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-marketingskills-1",
+  "cost": 0.41,
+  "min": 1.8,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 2,
+   "geo": 0,
+   "unreq": 0,
+   "total": 34
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 1,
+   "geo": 1,
+   "unreq": 0,
+   "total": 35
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-marketingskills-2",
+  "cost": 0.36,
+  "min": 1.5,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 7,
+   "geo": 0,
+   "unreq": 0,
+   "total": 42
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 3,
+   "geo": 0,
+   "unreq": 0,
+   "total": 47
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-open-seo-1",
+  "cost": 0.32,
+  "min": 1.7,
+  "opus": {
+   "recall": 17.0,
+   "P": 9.5,
+   "S": 7.5,
+   "wrong": 6,
+   "geo": 0,
+   "unreq": 0,
+   "total": 32
+  },
+  "codex": {
+   "recall": 16.5,
+   "P": 9.5,
+   "S": 7,
+   "wrong": 4,
+   "geo": 0,
+   "unreq": 0,
+   "total": 31
+  },
+  "disagree": [
+   7
+  ]
+ },
+ {
+  "run": "url-open-seo-2",
+  "cost": 0.32,
+  "min": 1.4,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 2,
+   "geo": 0,
+   "unreq": 0,
+   "total": 36
+  },
+  "codex": {
+   "recall": 19,
+   "P": 12,
+   "S": 7,
+   "wrong": 4,
+   "geo": 0,
+   "unreq": 0,
+   "total": 39
+  },
+  "disagree": [
+   11
+  ]
+ },
+ {
+  "run": "url-seranking-1",
+  "cost": 0.4,
+  "min": 1.6,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 1,
+   "geo": 0,
+   "unreq": 0,
+   "total": 32
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 1,
+   "geo": 0,
+   "unreq": 0,
+   "total": 25
+  },
+  "disagree": []
+ },
+ {
+  "run": "url-seranking-2",
+  "cost": 0.45,
+  "min": 1.7,
+  "opus": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 4,
+   "geo": 0,
+   "unreq": 0,
+   "total": 36
+  },
+  "codex": {
+   "recall": 20,
+   "P": 12,
+   "S": 8,
+   "wrong": 3,
+   "geo": 0,
+   "unreq": 0,
+   "total": 25
+  },
+  "disagree": []
+ }
+]

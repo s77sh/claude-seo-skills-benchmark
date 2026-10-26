@@ -1,0 +1,11 @@
+{
+  "title": "Claude SEO Skills Benchmark: 5 Claude Code SEO skill packs audited against 20 planted SEO issues",
+  "upload_type": "dataset",
+  "description": "A reproducible benchmark for AI SEO audit tools. A small test site is built with 20 planted technical SEO problems (two sets: easy and hard), with answer keys hashed before any run. Five Claude Code SEO skill packs (marketingskills, SE Ranking seo-skills, claude-seo, Hawk Academy, open-seo) and plain Claude Code each audited the site with the same prompt and model, and every audit was graded blind by two LLM graders. Includes the site builders, server, run scripts, answer keys, all audits, grades and scores. Write-up: https://saeedseo.com/blog/claude-seo-skills/",
+  "creators": [{ "name": "Shahriar, Saeed" }],
+  "keywords": ["SEO", "technical SEO", "SEO audit", "Claude Code", "agent skills", "LLM evaluation", "benchmark"],
+  "license": "cc-by-4.0",
+  "related_identifiers": [
+    { "identifier": "https://saeedseo.com/blog/claude-seo-skills/", "relation": "isDocumentedBy", "resource_type": "publication-other" }
+  ]
+}

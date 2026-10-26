@@ -1,0 +1,47 @@
+{"issues":[
+{"n":1,"score":0,"fix":"none","quote":"Not found. /subscriptions/ and the X-Robots-Tag noindex header are never mentioned."},
+{"n":2,"score":1,"fix":"right","quote":"/coffee/java-ijen/ ... canonical href=\"https://kopikita.test/coffee/ijen/\". But /coffee/ijen/ returns 301 → /coffee/java-ijen/."},
+{"n":3,"score":1,"fix":"right","quote":"/gifts/ is a soft 404 linked from every page's nav ... HTTP 200, <title>Page not found | Kopi Kita</title>"},
+{"n":4,"score":1,"fix":"right","quote":"/coffee/kintamani/ (302 → /coffee/bali-kintamani/) ... It is also a 302 (temporary), not a 301."},
+{"n":5,"score":1,"fix":"right","quote":"/id/ declares hreflang=\"in\". The correct ISO 639-1 code is id ... / does not point back."},
+{"n":6,"score":1,"fix":"right","quote":"/coffee/gift-box/ raw HTML contains only <div id=\"product-description\"></div>; all the text ... is written in by an inline innerHTML script."},
+{"n":7,"score":1,"fix":"right","quote":"the wholesale link in the site-wide nav has rel=\"nofollow\" ... Fix: remove rel=\"nofollow\"."},
+{"n":8,"score":1,"fix":"right","quote":"/coffee/bali-kintamani/ JSON-LD offers.price is 145000, but the page body says \"Rp 165,000 for 250g\"."},
+{"n":9,"score":1,"fix":"right","quote":"/blog/how-to-brew-pour-over/ ... has a trailing comma before the closing brace, so the block fails to parse."},
+{"n":10,"score":1,"fix":"right","quote":"the 1200x700 hero <img> has loading=\"lazy\" and is above the fold, so it is almost certainly the LCP element."},
+{"n":11,"score":0,"fix":"none","quote":"Not found. The audit instead says every page has \"a meta description, lang, viewport and exactly one H1\"."},
+{"n":12,"score":1,"fix":"right","quote":"/blog/page/2/ ... its canonical points to /blog/ ... give page 2 a self-referencing canonical rather than pointing it at page 1"},
+{"n":13,"score":1,"fix":"right","quote":"/coffee/samples/ is listed but blocked by Disallow: /coffee/samples/ in robots.txt."},
+{"n":14,"score":1,"fix":"right","quote":"every URL has <lastmod>2027-03-01</lastmod>, which is after today (2026-10-22)."},
+{"n":15,"score":1,"fix":"right","quote":"/coffee/bali-kintamani/ vs /coffee/bali-kintamani-1kg/ ... share the same meta description and near-identical body copy"},
+{"n":16,"score":1,"fix":"right","quote":"/coffee/flores-bajawa/ description is \"Washed coffee from the Ijen plateau, East Java...\" which is the Java Ijen copy."},
+{"n":17,"score":1,"fix":"right","quote":"/about/ three farm photos use data-src with no src; a script sets src on scroll."},
+{"n":18,"score":1,"fix":"right","quote":"the only link is <button onclick=\"location.href='/coffee/limited-release/'\">. There is no <a href>, and the page is not in the sitemap."},
+{"n":19,"score":1,"fix":"right","quote":"the homepage \"best seller\" link, and two blog posts, link to the redirecting URL ... update the three links to /coffee/bali-kintamani/"},
+{"n":20,"score":1,"fix":"right","quote":"/contact/ <img src=\"http://kopikita.test/assets/img/storefront.jpg\"> and <iframe src=\"http://maps.example.com/embed?...\"> over plain HTTP"}
+],
+"wrong_findings":[
+{"claim":"Every page has a unique, correctly sized title, a meta description, lang, viewport and exactly one H1.","why_wrong":"/visit/ has no <meta name=\"viewport\"> (planted issue 11). /gifts/ also has no meta description, which the audit itself admits in finding 2."}
+],
+"geo_advice":[
+{"advice":"Add an llms.txt file","quote":"Optionally add a short llms.txt."},
+{"advice":"Restructure content into short, quotable FAQ-style passages, written for AI citation","quote":"Add FAQ-style sections (shipping, roast dates, grind options) that answer common queries in short, quotable passages."}
+],
+"unrequested":[],
+"extra_true":[
+{"finding":"No Open Graph or Twitter card tags and no favicon link on any page"},
+{"finding":"No LocalBusiness/CafeOrCoffeeShop schema for the physical cafe; only a basic Organization block on the home page"},
+{"finding":"/coffee/flores-bajawa/, /coffee/gift-box/ and /coffee/limited-release/ have no Product schema, and the existing Product blocks are missing properties"},
+{"finding":"/blog/ links only 2 posts; /blog/cold-brew-at-home/ is reachable only through /blog/page/2/"},
+{"finding":"/gifts/ has no canonical and no meta description"},
+{"finding":"/shop/ is thin and doesn't link to the gift box, subscriptions or limited release"},
+{"finding":"Real 404s return the server's default error page, not a branded one"},
+{"finding":"robots.txt disallows /cart/, which doesn't exist"},
+{"finding":"Article JSON-LD has no image, publisher or mainEntityOfPage"},
+{"finding":"No breadcrumbs or BreadcrumbList schema; footer only links to Contact"},
+{"finding":"Blog posts show no visible author byline or dates, although the schema names an author"},
+{"finding":"Home page is short and has no H2s"},
+{"finding":"Security and caching headers are absent on the dev server (the audit says to verify on production)"}
+],
+"total_findings":34,
+"notes":"18 of the 20 issues fully found (score 18/20). Missed #1 (X-Robots-Tag noindex on /subscriptions/, visible only in the headers) and #11 (no viewport on /visit/); it also falsely claimed every page has a viewport. Both GEO items are mild: llms.txt is called optional and low priority, and the second is a judgment call because the audit never names AI or LLMs. No promo or upsell content."}

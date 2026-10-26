@@ -1,0 +1,51 @@
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"/contact/ has no canonical. Every other page has one. Fix: Add a self-referencing canonical for consistency."},
+{"n":2,"score":1,"fix":"right","quote":"/shop/ (canonical points to https://kopikita.test/coffee/)"},
+{"n":3,"score":1,"fix":"right","quote":"/wholesale/ ... <meta name=\"robots\" content=\"noindex, follow\">. The page is also in the sitemap and the main navigation"},
+{"n":4,"score":1,"fix":"right","quote":"/coffee/ and /subscriptions/ both use \"Single-Origin Indonesian Coffee | Kopi Kita\"."},
+{"n":5,"score":1,"fix":"right","quote":"The Kintamani title is very long (about 80 characters)... It will be cut off in results."},
+{"n":6,"score":1,"fix":"right","quote":"Missing meta descriptions — URLs: /about/ has none."},
+{"n":7,"score":0.5,"fix":"right","quote":"/blog/how-to-brew-pour-over/ (recommends \"our Aceh Gayo\" with no link and no product page)"},
+{"n":8,"score":1,"fix":"right","quote":"Flores Bajawa is in the sitemap but only reachable through the sitemap itself, which makes it close to an orphan page"},
+{"n":9,"score":1,"fix":"right","quote":"It redirects /menu/ to /cafe/ (301), then /cafe/ to /visit/ (301)."},
+{"n":10,"score":1,"fix":"right","quote":"/robots.txt (Disallow: /assets/css/ ...). Google needs to load CSS to see pages the way visitors do."},
+{"n":11,"score":1,"fix":"right","quote":"Sumatra Mandheling page returns 404 but is in the sitemap"},
+{"n":12,"score":0,"fix":null,"quote":""},
+{"n":13,"score":1,"fix":"right","quote":"/coffee/brewing-guide/ has \"Coffee brewing guide\" and \"Brew methods\" both as H1."},
+{"n":14,"score":1,"fix":"right","quote":"/ hero image (/assets/img/hero-beans.jpg): the <img> has no alt text."},
+{"n":15,"score":1,"fix":"right","quote":"/about/ hero image (/assets/img/roastery-hero.jpg): about 1.8 MB ... likely to slow page load"},
+{"n":16,"score":0,"fix":null,"quote":""},
+{"n":17,"score":1,"fix":"right","quote":"Bali Kintamani's Product markup has no name field."},
+{"n":18,"score":0.5,"fix":"none","quote":"/coffee/: FAQPage markup is present. Google now shows FAQ rich results only for a small set of sites"},
+{"n":19,"score":1,"fix":"right","quote":"Two near-identical pour over articles compete with each other ... /blog/how-to-brew-pour-over/ and /blog/pour-over-coffee-guide/"},
+{"n":20,"score":1,"fix":"right","quote":"The \"Best coffee beans\" article has a stale year in its URL, title and heading"}
+],
+"wrong_findings":[
+{"claim":"Every live page has a unique, descriptive H1","why_wrong":"/visit/ has no H1 (crawl H1-1 is empty, and the HTML only has H2s). /coffee/brewing-guide/ has two H1s, which the audit itself reports in item 15."},
+{"claim":"/blog/how-to-brew-pour-over/ recommends \"our Aceh Gayo\" with no link","why_wrong":"The post links to /coffee/aceh-gayo/ (<a href=\"/coffee/aceh-gayo/\">), and that URL returns 404 in the crawl. The problem is a broken link, not a missing one."},
+{"claim":"Google now shows FAQ rich results only for a small set of sites","why_wrong":"This is out of date. Google stopped showing FAQ rich results entirely in May 2026."},
+{"claim":"Home page has Organization markup, and blog posts have Article markup with author and dates","why_wrong":"/blog/cold-brew-at-home/ has no JSON-LD at all."},
+{"claim":"Do not list redirected or blocked pages (/shop/ as it stands, /sumatra-mandheling/)","why_wrong":"/shop/ is neither redirected nor blocked. It returns 200 and is canonicalised to /coffee/. The other URL is /coffee/sumatra-mandheling/, and it is a 404, not a redirect or a block."},
+{"claim":"The Kintamani title is very long (about 80 characters)","why_wrong":"The title is 88 characters (crawl Title 1 Length = 88)."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product structured data even though it shows a price"},
+{"finding":"/coffee/ says it roasts 'three to five single origins' but links only two; /shop/ also lists only two"},
+{"finding":"/shop/ is listed in the sitemap while canonicalised to /coffee/"},
+{"finding":"Article schema headline on /blog/best-coffee-beans-2024/ drops the year, so it doesn't match the title and H1"},
+{"finding":"Article markup lacks image, mainEntityOfPage and author url"},
+{"finding":"Organization markup has no sameAs; no LocalBusiness markup on /visit/; no BreadcrumbList"},
+{"finding":"sitemap.xml has no lastmod values"},
+{"finding":"No Open Graph or Twitter Card tags on any page"},
+{"finding":"robots.txt Disallow: /cart/ matches a path that doesn't exist"},
+{"finding":"Missing URLs show the default server error page (no custom 404)"},
+{"finding":"The home page body doesn't link to /subscriptions/, /shop/ or /visit/"},
+{"finding":"/wholesale/ has no enquiry form, only a 'contact us' link"},
+{"finding":"Product markup has no SKU, weight or reviews"}
+],
+"total_findings":32,
+"notes":"Recall is 17/20 (16 full, 2 half, 2 missed). It missed the /visit/ missing H1 (and wrongly says every page has an H1) and the thin cold brew post. It misread the Aceh Gayo broken link as an unlinked mention, and gave FAQ only the out-of-date 'small set of sites' line with no fix. No GEO advice and no promo content."}
+```

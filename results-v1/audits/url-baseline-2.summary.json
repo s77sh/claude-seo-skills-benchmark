@@ -1,0 +1,12 @@
+{
+ "cost_usd": 0.2967412,
+ "turns": 36,
+ "duration_s": 82.82,
+ "skills_loaded": [],
+ "tools": {
+  "Bash": 33,
+  "Write": 2
+ },
+ "denials": 3,
+ "subtype": "success"
+}

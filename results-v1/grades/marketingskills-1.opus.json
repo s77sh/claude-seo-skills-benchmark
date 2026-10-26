@@ -1,0 +1,51 @@
+I've checked the audit's claims against the HTML and crawl; here's the scoring:
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/` has no canonical tag (crawl: blank). Every other page has a self-referencing canonical."},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` canonicalises to `/coffee/` even though it has different content"},
+{"n":3,"score":1,"fix":"right","quote":"`/wholesale/` is set to `noindex` while being linked from the main nav and listed in the sitemap."},
+{"n":4,"score":1,"fix":"right","quote":"Title is \"Single-Origin Indonesian Coffee | Kopi Kita\", identical to `/coffee/` (a copy-paste error)."},
+{"n":5,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/`: 88 characters ... Google will truncate or rewrite it."},
+{"n":6,"score":1,"fix":"right","quote":"`/about/` has no meta description (crawl: length 0)."},
+{"n":7,"score":1,"fix":"right","quote":"`/blog/how-to-brew-pour-over/` links to `/coffee/aceh-gayo/` ... returns 404."},
+{"n":8,"score":1,"fix":"right","quote":"`/coffee/flores-bajawa/` is an orphan ... Crawl shows 0 inlinks."},
+{"n":9,"score":1,"fix":"right","quote":"`/menu/` returns 301 to `/cafe/`, which returns 301 to `/visit/`."},
+{"n":10,"score":1,"fix":"right","quote":"`robots.txt` blocks the stylesheet ... Google needs CSS to render pages"},
+{"n":11,"score":1,"fix":"right","quote":"`/coffee/sumatra-mandheling/` returns **404** and has 0 inlinks."},
+{"n":12,"score":1,"fix":"right","quote":"The page has two `<h2>` tags (\"Opening hours\", \"Menu\") and no `<h1>`."},
+{"n":13,"score":1,"fix":"right","quote":"`<h1>Coffee brewing guide</h1>` and later `<h1>Brew methods</h1>`"},
+{"n":14,"score":1,"fix":"right","quote":"`hero-beans.jpg` has no `alt` attribute (crawl: \"(missing)\")."},
+{"n":15,"score":1,"fix":"right","quote":"`roastery-hero.jpg` is 1,818,123 bytes at 2400x1600"},
+{"n":16,"score":1,"fix":"right","quote":"`/blog/cold-brew-at-home/`: 67 words, ranks at position 38.2 and 44.6"},
+{"n":17,"score":1,"fix":"right","quote":"Kintamani Product JSON-LD has no `name` property (Ijen has one)."},
+{"n":18,"score":1,"fix":"right","quote":"The JSON-LD contains two questions ... The visible page has no FAQ."},
+{"n":19,"score":1,"fix":"right","quote":"Two pour over articles cannibalise each other ... Google swaps between the two pages for the same queries"},
+{"n":20,"score":1,"fix":"right","quote":"The year 2024 is in the URL, title, H1 ... a visitor in 2026 sees \"2024 Guide\"."}
+],
+"wrong_findings":[
+{"claim":"On /blog/best-coffee-beans-2024/ the year 2024 is in the URL, title, H1 and meta description","why_wrong":"The meta description ('How to choose coffee beans from Bali: naturals vs washed, roast dates...') has no 2024 in it. Only the URL, title and H1 do."},
+{"claim":"FAQ rich results are now shown only for a small set of authoritative government and health sites","why_wrong":"This is out of date. Google stopped showing FAQ rich results in May 2026."},
+{"claim":"/visit/ has no address in the page body (only in the footer)","why_wrong":"The body text says 'on Jalan Raya Sayan, ten minutes from central Ubud'. A partial address is there; only the street number is missing."},
+{"claim":"Brewing guide needs a link added to the pour over article (issue 12)","why_wrong":"/coffee/brewing-guide/ already links to /blog/how-to-brew-pour-over/ ('Read how to brew pour over')."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"Sitemap lists the noindex /wholesale/ and the canonicalised /shop/"},
+{"finding":"Sitemap has no <lastmod> values"},
+{"finding":"/coffee/flores-bajawa/ has no Product schema"},
+{"finding":"Product Offer covers only the 250g bag although a 1kg bag is sold"},
+{"finding":"No LocalBusiness/CafeOrCoffeeShop schema; Organization has no telephone or sameAs"},
+{"finding":"/visit/ is thin (87 words) and gets only 2 direct inlinks"},
+{"finding":"Many meta descriptions are short (/blog/ 95, cold brew 83, /contact/ 77)"},
+{"finding":"Schema headline on the 2024 article doesn't match its H1/title"},
+{"finding":"Blog posts have no visible byline or date; there is no privacy policy page"},
+{"finding":"/blog/ index is thin (43 words), and /wholesale/ (94) is thin"},
+{"finding":"Images have no srcset, WebP/AVIF or lazy loading"},
+{"finding":"Blog posts don't link to each other; several have only 1 inlink"},
+{"finding":"The grind size chart on the brewing guide is one paragraph, not a structured table"}
+],
+"total_findings":36,
+"notes":"All 20 planted issues were found with page and specific problem, and the fix advice is sound throughout. There are 4 factual errors (mostly minor, plus outdated FAQ rich-results info), and no GEO advice or promotional additions."}
+```

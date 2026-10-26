@@ -1,0 +1,6 @@
+Server behaviour not visible in the HTML files (from serve_v2.py):
+- /coffee/ijen/ -> 301 Moved Permanently, Location: /coffee/java-ijen/
+- /coffee/kintamani/ -> 302 Found, Location: /coffee/bali-kintamani/
+- /subscriptions/ responds 200 with header X-Robots-Tag: noindex
+- /gifts/ responds 200 (its body says "Page not found")
+- Any path without a file returns 404.

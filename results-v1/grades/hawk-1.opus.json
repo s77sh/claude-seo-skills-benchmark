@@ -1,0 +1,45 @@
+I've read the key, the audit, the crawl, the sitemap, robots.txt and the relevant HTML, and checked the audit's claims against them. The grading is below.
+
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/` has no canonical tag. Every other indexable page has a self-referencing canonical. Add `<link rel=\"canonical\" href=\"https://kopikita.test/contact/\">`"},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` is canonicalised to `/coffee/` but is in the sitemap and in the main nav ... the canonical is probably a mistake"},
+{"n":3,"score":1,"fix":"right","quote":"`/wholesale/` is `noindex` but is in the sitemap and the main nav"},
+{"n":4,"score":1,"fix":"right","quote":"`/subscriptions/` and `/coffee/` both have the title \"Single-Origin Indonesian Coffee | Kopi Kita\""},
+{"n":5,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/`: title is 88 characters ... will truncate in the SERP"},
+{"n":6,"score":1,"fix":"right","quote":"`/about/`: no meta description (crawl length 0); add one."},
+{"n":7,"score":1,"fix":"right","quote":"`/coffee/aceh-gayo/` returns 404. It is linked from `/blog/how-to-brew-pour-over/`"},
+{"n":8,"score":1,"fix":"right","quote":"`/coffee/flores-bajawa/` is an orphan ... has 0 inlinks in the crawl and is in the sitemap"},
+{"n":9,"score":1,"fix":"right","quote":"Live check confirms `/menu/` → 301 `/cafe/` → 301 `/visit/`."},
+{"n":10,"score":1,"fix":"right","quote":"robots.txt blocks the site's CSS ... `robots.txt` has `Disallow: /assets/css/`"},
+{"n":11,"score":1,"fix":"right","quote":"`/coffee/sumatra-mandheling/` returns 404 but is listed in `sitemap.xml`"},
+{"n":12,"score":1,"fix":"right","quote":"`/visit/` has no H1 ... the HTML uses only two `<h2>`s"},
+{"n":13,"score":1,"fix":"right","quote":"`/coffee/brewing-guide/` has two H1s ... Make the second an `<h2>`."},
+{"n":14,"score":1,"fix":"right","quote":"`/assets/img/hero-beans.jpg` (homepage hero, 1200×700) has no alt attribute at all"},
+{"n":15,"score":1,"fix":"right","quote":"`/assets/img/roastery-hero.jpg` is 1.8 MB (2400×1600), shown on `/about/`. Compress / resize"},
+{"n":16,"score":1,"fix":"right","quote":"`/blog/cold-brew-at-home/` ... 67 words can't compete ... Expand to 600+ words"},
+{"n":17,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/`: `Product` has no `name` (required for Product rich results)."},
+{"n":18,"score":1,"fix":"right","quote":"`/coffee/`: `FAQPage` markup, but the page body shows no FAQ ... Either add a visible FAQ section or remove the block."},
+{"n":19,"score":1,"fix":"right","quote":"Two pour-over articles cannibalise each other and neither ranks"},
+{"n":20,"score":1,"fix":"right","quote":"Stale \"2024\" on a page that is edited in 2026 ... URL, title ... and H1 contain 2024"}
+],
+"wrong_findings":[
+{"claim":"Clean click depth: every page is within 2 clicks of the homepage","why_wrong":"/coffee/flores-bajawa/ has 0 inlinks in the crawl and no page links to it, so it can't be reached by clicking at all. The audit itself reports this in #8."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product schema, unlike the other product pages"},
+{"finding":"/coffee/flores-bajawa/ is thin (75 words), and /coffee/ and /shop/ don't list it"},
+{"finding":"/blog/cold-brew-at-home/ has no structured data"},
+{"finding":"Article schema on the three blog posts is missing image and publisher, and author has no url"},
+{"finding":"Article headline on /blog/best-coffee-beans-2024/ doesn't match the on-page H1"},
+{"finding":"No LocalBusiness/CafeOrCoffeeShop schema even though there is a physical cafe"},
+{"finding":"Sitemap lists the canonicalised /shop/ and the noindexed /wholesale/, and has no lastmod values"},
+{"finding":"Several meta descriptions are short (under ~120 characters)"},
+{"finding":"Blog posts and /visit/ get very few contextual internal links"},
+{"finding":"Homepage text 'pick up at the roastery cafe' isn't linked to /visit/"}
+],
+"total_findings":30,
+"notes":"All 20 planted issues found with a named page and correct fixes; no GEO advice or promo content. Small errors outside the site-claim rule: it says FAQ rich results still show for 'a narrow set of authoritative sites' (Google dropped them in May 2026), and 'Fix the three 404 problems' lists only two."}
+```

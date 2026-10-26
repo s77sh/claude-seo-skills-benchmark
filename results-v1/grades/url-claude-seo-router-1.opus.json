@@ -1,0 +1,49 @@
+```json
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/` (no canonical)"},
+{"n":2,"score":1,"fix":"right","quote":"Shop page canonicalises to /coffee/ ... `<link rel=\"canonical\" href=\"https://kopikita.test/coffee/\">`"},
+{"n":3,"score":1,"fix":"right","quote":"Wholesale page is set to noindex ... The page is in the sitemap, linked from the main nav and the homepage"},
+{"n":4,"score":1,"fix":"right","quote":"`/coffee/` and `/subscriptions/` both use \"Single-Origin Indonesian Coffee | Kopi Kita\"."},
+{"n":5,"score":0,"fix":"none","quote":""},
+{"n":6,"score":1,"fix":"right","quote":"`/about/` (no meta description)"},
+{"n":7,"score":1,"fix":"right","quote":"`/blog/how-to-brew-pour-over/` links to `/coffee/aceh-gayo/`, which returns 404."},
+{"n":8,"score":1,"fix":"right","quote":"Orphaned / under-linked pages ... `/coffee/flores-bajawa/` (no inbound links from the pages I fetched"},
+{"n":9,"score":1,"fix":"right","quote":"`/menu/` → `/cafe/` → `/visit/`... Two chained 301s on a site-wide link."},
+{"n":10,"score":1,"fix":"right","quote":"robots.txt blocks CSS ... `/robots.txt` has `Disallow: /assets/css/`"},
+{"n":11,"score":1,"fix":"right","quote":"`/coffee/sumatra-mandheling/` (listed in `sitemap.xml`) ... HTTP 404."},
+{"n":12,"score":1,"fix":"right","quote":"Visit page has no H1 ... The page starts with `<h2>Opening hours</h2>`. No `<h1>`."},
+{"n":13,"score":1,"fix":"right","quote":"Brewing guide has two H1s ... (\"Coffee brewing guide\" and \"Brew methods\")"},
+{"n":14,"score":1,"fix":"right","quote":"Homepage hero image has no alt text ... `<img>` has width and height (good, no layout shift) but no `alt`."},
+{"n":15,"score":1,"fix":"right","quote":"About page hero image is 1.8 MB ... `/assets/img/roastery-hero.jpg`, 1,818,123 bytes"},
+{"n":16,"score":1,"fix":"right","quote":"Thin blog post ... `/blog/cold-brew-at-home/` ... About 80 words and one paragraph."},
+{"n":17,"score":1,"fix":"right","quote":"Kintamani's Product has no `name`... Google requires `name` for Product, so the Kintamani markup is invalid"},
+{"n":18,"score":1,"fix":"right","quote":"FAQPage JSON-LD with two questions. The questions and answers do not appear visibly on the page"},
+{"n":19,"score":1,"fix":"right","quote":"`/blog/how-to-brew-pour-over/` and `/blog/pour-over-coffee-guide/` ... Two posts competing for the same query split rankings"},
+{"n":20,"score":1,"fix":"right","quote":"An out-of-date year in the title and URL signals stale content to users"}
+],
+"wrong_findings":[
+{"claim":"I fetched all 19 sitemap URLs","why_wrong":"sitemap.xml lists 18 URLs."},
+{"claim":"Article headlines differ from the on-page H1s (\"Pour over coffee: a guide for beginners\" vs title tag)","why_wrong":"On /blog/pour-over-coffee-guide/ and /blog/how-to-brew-pour-over/ the schema headline exactly matches the H1. Only the title tags differ. Only best-coffee-beans-2024 has a headline that differs from its H1."}
+],
+"geo_advice":[
+{"advice":"Add an llms.txt file (marked optional)","quote":"Optional. If you want it, add a short `llms.txt` listing the main pages."}
+],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product schema"},
+{"finding":"Organization JSON-LD has no telephone, sameAs or hours, and there is no LocalBusiness/Cafe markup; the phone appears only as page text"},
+{"finding":"Article schema has no image, publisher or mainEntityOfPage, and the author has no url"},
+{"finding":"Product offers have no url, prices are strings, and the 1kg variants aren't marked up"},
+{"finding":"sitemap.xml has no lastmod and lists a noindex URL (/wholesale/) and a canonicalised URL (/shop/)"},
+{"finding":"Nav links to /menu/ while the sitemap and About page use /visit/"},
+{"finding":"/visit/ is thin (87 words) and has no phone number"},
+{"finding":"/blog/cold-brew-at-home/ is linked only from the blog index"},
+{"finding":"/blog/best-coffee-beans-2024/ schema headline doesn't match the H1 or title"},
+{"finding":"Homepage body doesn't link to /shop/ or /subscriptions/"},
+{"finding":"No Open Graph or Twitter card tags on any page"},
+{"finding":"No favicon link on any page"}
+],
+"total_findings":36,
+"notes":"Strong audit: 19/20 found. Only the over-long Kintamani title (88 chars) was missed, and the audit even says every page has a 'sensible' title. FAQ fix offers 'leave the markup as is' as an option; it's harmless because FAQ rich results are retired, so I marked it right. The llms.txt suggestion is hedged ('optional, Google ignores it') but still a recommendation."
+}
+```

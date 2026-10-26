@@ -1,0 +1,48 @@
+I've checked the audit's claims against the HTML, robots.txt, sitemap and crawl. Here is the grading:
+
+{"issues":[
+{"n":1,"score":1,"fix":"right","quote":"`/contact/` has no canonical tag (every other page does). Add a self-canonical."},
+{"n":2,"score":1,"fix":"right","quote":"`/shop/` has `<link rel=\"canonical\" href=\"https://kopikita.test/coffee/\">`"},
+{"n":3,"score":1,"fix":"right","quote":"/wholesale/ is `noindex` but is in the sitemap and linked sitewide"},
+{"n":4,"score":1,"fix":"right","quote":"`/subscriptions/` and `/coffee/` both use \"Single-Origin Indonesian Coffee | Kopi Kita\"."},
+{"n":5,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/` title is 88 characters (truncated at about 60)"},
+{"n":6,"score":1,"fix":"right","quote":"`/about/` has no meta description (crawl: length 0). Write one (about 150 chars)"},
+{"n":7,"score":1,"fix":"right","quote":"`/coffee/aceh-gayo/` (404, linked from `/blog/how-to-brew-pour-over/`"},
+{"n":8,"score":1,"fix":"right","quote":"`/coffee/flores-bajawa/` has 0 inlinks."},
+{"n":9,"score":1,"fix":"right","quote":"Sitewide nav links to `/menu/`, a two-hop redirect chain"},
+{"n":10,"score":1,"fix":"right","quote":"`robots.txt` has `Disallow: /assets/css/`. The crawl shows `/assets/css/site.css` as \"Blocked by robots.txt\""},
+{"n":11,"score":1,"fix":"right","quote":"`/coffee/sumatra-mandheling/` (404, listed in sitemap.xml, 0 inlinks)"},
+{"n":12,"score":1,"fix":"right","quote":"/visit/ has no H1 and no LocalBusiness schema"},
+{"n":13,"score":1,"fix":"right","quote":"`/coffee/brewing-guide/` has two H1s (\"Coffee brewing guide\", \"Brew methods\"). Make the second an H2."},
+{"n":14,"score":1,"fix":"right","quote":"`/assets/img/hero-beans.jpg` on the homepage has no `alt` (crawl: \"(missing)\")."},
+{"n":15,"score":1,"fix":"right","quote":"`/assets/img/roastery-hero.jpg` is 1,818,123 bytes (1.8 MB), used at 2400×1600 on `/about/`."},
+{"n":16,"score":1,"fix":"right","quote":"Cold-brew post is thin and ranks far off page 1 ... 67 words"},
+{"n":17,"score":1,"fix":"right","quote":"`/coffee/bali-kintamani/` Product | no `name`, a required property, so ineligible for product rich results"},
+{"n":18,"score":1,"fix":"right","quote":"`/coffee/` FAQPage ... The FAQ content is also not visible on the page."},
+{"n":19,"score":1,"fix":"right","quote":"Two pour-over posts compete for the same queries"},
+{"n":20,"score":1,"fix":"right","quote":"`/blog/best-coffee-beans-2024/` titled \"(2024 Guide)\", yet last modified 2026-09-01."}
+],
+"wrong_findings":[
+{"claim":"Overall: the technical base is clean (all canonicals self-referencing and on https ...)","why_wrong":"/shop/ canonicalises to /coffee/ and /contact/ has no canonical. The audit's own findings #4 and #18 say so."},
+{"claim":"Google restricts FAQ rich results to well-known government and health sites","why_wrong":"Out of date. Google stopped showing FAQ rich results entirely in May 2026."},
+{"claim":"Search Console will report \"Googlebot cannot access CSS\"","why_wrong":"That was an old Search Console warning message. Current Search Console has no such report, so this is a false prediction."}
+],
+"geo_advice":[],
+"unrequested":[],
+"extra_true":[
+{"finding":"/coffee/flores-bajawa/ has no Product JSON-LD"},
+{"finding":"/blog/cold-brew-at-home/ has no Article schema and only 1 inlink"},
+{"finding":"/visit/ has no LocalBusiness/CafeOrCoffeeShop markup"},
+{"finding":"The sitemap lists a noindex page (/wholesale/) and a canonicalised page (/shop/)"},
+{"finding":"No <lastmod> on any sitemap entry"},
+{"finding":"Article schema has no image, no publisher, and author has no url"},
+{"finding":"Organization schema has no sameAs or contactPoint"},
+{"finding":"Short meta descriptions on /blog/cold-brew-at-home/ (83), /blog/ (95) and /contact/ (77)"},
+{"finding":"robots.txt disallows /cart/, a path that doesn't exist"},
+{"finding":"Other short pages (/contact/, /flores-bajawa/, /shop/, /visit/) and a 132-word homepage"},
+{"finding":"/shop/ links only to Kintamani and Ijen, and /coffee/ doesn't link to Flores"},
+{"finding":"/visit/ has only 2 inlinks because the nav goes through /menu/"},
+{"finding":"Low CTR on large impression pools, from GSC"}
+],
+"total_findings":40,
+"notes":"Full recall: 20/20 at score 1, and every fix is right. The false claims are a summary line that contradicts the audit's own canonical findings, an out-of-date FAQ rich-result claim, and a made-up Search Console warning. There is no GEO advice and nothing unrequested."}
