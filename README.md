@@ -2,9 +2,9 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23668169.svg)](https://doi.org/10.5281/zenodo.23668169)
 
-Which Claude Code SEO skill actually finds the most problems? A small test site with 20 planted SEO problems, an answer key written before any run, and the audits 5 Claude Code SEO skill packs (plus plain Claude Code) wrote for it. Run your own skill against it and compare.
+On 22 October 2026 I couldn't find a side-by-side test of Claude Code SEO skills. So I built a small site with **20 planted SEO problems** and wrote the answer key before any run.
 
-Write-up with the verdict and install commands: **[Best Claude SEO Skills: 5 Packs Tested](https://saeedseo.com/blog/claude-seo-skills/)**, by [Saeed Shahriar](https://saeedseo.com/).
+Then 5 skill packs and plain Claude Code each audited it. **The verdict and install commands** are in the write-up, [Best Claude SEO Skills: 5 Packs Tested](https://saeedseo.com/blog/claude-seo-skills/).
 
 ## Results (hard set, URL only)
 
@@ -17,7 +17,11 @@ Write-up with the verdict and install commands: **[Best Claude SEO Skills: 5 Pac
 | Plain Claude Code (no skill) | 18 | $0.40 | X-Robots-Tag noindex header, missing viewport |
 | [open-seo](https://github.com/every-app/open-seo) (no MCP) | 16 | $0.57 | header noindex, JS-only content, schema price mismatch, viewport |
 
-One run per pack on the hard set, Claude Sonnet 5.5, graded blind against the key by Codex and Claude Opus (Opus hit a usage limit before grading marketingskills and SE Ranking; those are Codex grades). The easy set (19 runs) didn't separate the packs: nearly all found 19 or 20. Details: `results-v1.md`, `results-v2.md`.
+Each pack ran once on the hard set with Claude Sonnet 5.5, and **Codex and Claude Opus graded blind**.
+
+Opus hit a usage limit before marketingskills and SE Ranking, so those two are Codex grades.
+
+The easy set, 19 runs, **barely separated them**: nearly all found 19 or 20. Details are in `results-v1.md` and `results-v2.md`.
 
 ## What's here
 
@@ -37,7 +41,7 @@ One run per pack on the hard set, Claude Sonnet 5.5, graded blind against the ke
 
 ## The answer keys were fixed first
 
-Each key's sha256 was logged in `runs-log.md` before any run, so the goalposts can't move:
+Each key's sha256 went into `runs-log.md` before run 1, so **the goalposts can't move**:
 
 - `answer-key.md`: `25b63162cb2f84eaa8e97e437d98ee96bc93dc936f8294afb84801c2b402b82c`
 - `answer-key-v2.md`: `08e9440f6c05a56cc59fabc71e1ba88f5cfab6c566b341d272f6499454ef9c1d`
@@ -57,38 +61,50 @@ cp results-v2/server-behaviour.txt work/v2/
 python3 score.py work/v2
 ```
 
-The audit lands in `work/v2/runs/my-skill-1/audit.md`. Scoring: 1 for the right page and problem, 0.5 for the right area without the page, 0 for a miss. To re-run the 5 packs, clone each at the version in `runs-log.md` into `packs/<name>/` and run `./round-v2.sh 1`.
+Your audit lands in `work/v2/runs/my-skill-1/audit.md`. **A find scores 1 for the right page and problem**, 0.5 for the right area without the page, and 0 for a miss.
+
+To re-run the 5 packs, clone each at its version from `runs-log.md` into `packs/<name>/`, then run `./round-v2.sh 1`.
 
 ## Limits
 
-One small site. It says nothing about local SEO, e-commerce, big sites or links. Pack scripts were not allowed to run, so this tests each skill's instructions, not its code.
+It's one small site. **It says nothing about local SEO, e-commerce, big sites or links.**
+
+Pack scripts weren't allowed to run, so this tests what each skill tells Claude to do.
 
 ## FAQ
 
-**What is the best Claude SEO skill?**
-On the hard set, [marketingskills](https://github.com/coreyhaines31/marketingskills) (seo-audit) and [SE Ranking seo-skills](https://github.com/seranking/seo-skills) both found all 20 problems. Plain Claude Code with no skill found 18. One run per pack on one small site, so read it as a first test, not a ranking.
+### What is the best Claude SEO skill?
 
-**Do Claude Code SEO skills beat plain Claude Code?**
-On the easy set, no: nearly every run found 19 or 20. On the hard set, two packs caught the 2 problems plain Claude missed (a noindex sent only in the HTTP header, and a missing viewport tag).
+On the hard set, **[marketingskills](https://github.com/coreyhaines31/marketingskills) (seo-audit) and [SE Ranking seo-skills](https://github.com/seranking/seo-skills) found all 20**. Plain Claude Code found 18. With one run per pack, I'd read it as a first test.
 
-**Can I test my own SEO skill or plugin with this?**
-Yes. Build the hard-set site, run your skill with `run-v2.sh`, grade it with `grade-v2.sh` and score it with `score.py`. The steps are under "Run your own skill on the hard set".
+### Do Claude Code SEO skills beat plain Claude Code?
 
-**How were the audits graded?**
-Blind, against an answer key whose sha256 hash was logged before the first run. Codex and Claude Opus graded each audit without knowing which pack wrote it.
+They didn't on the easy set, where nearly every run found 19 or 20. **The hard set split them:** two packs caught the header-only noindex and the missing viewport tag that plain Claude missed.
+
+### Can I test my own SEO skill or plugin with this?
+
+Yes. The steps are under "Run your own skill on the hard set" above.
+
+### How were the audits graded?
+
+Blind. Codex and Claude Opus scored each audit against the hashed key **without knowing which pack wrote it**.
 
 ## Related repos
 
-- [claude-random-numbers](https://github.com/s77sh/claude-random-numbers): which number Claude picks when asked for a random one, 446 prompts.
-- [interview-prep-pack](https://github.com/s77sh/interview-prep-pack): a Claude Code skill that builds interview prep from your own resume.
-- [viral-reel-playbook](https://github.com/s77sh/viral-reel-playbook): a Claude Code skill for Instagram Reels, TikTok and YouTube Shorts scripts.
-- [bali-product-demand](https://github.com/s77sh/bali-product-demand): Google Keyword Planner demand for 36 product niches in Bali.
+| Repo | What it is |
+|---|---|
+| [claude-random-numbers](https://github.com/s77sh/claude-random-numbers) | Which number Claude picks when you ask for a random one |
+| [interview-prep-pack](https://github.com/s77sh/interview-prep-pack) | A Claude Code skill that builds interview prep from your own resume |
+| [viral-reel-playbook](https://github.com/s77sh/viral-reel-playbook) | A Claude Code skill for Reels, TikTok and Shorts scripts |
+| [bali-product-demand](https://github.com/s77sh/bali-product-demand) | Keyword Planner demand for 36 product niches in Bali |
 
-All of them, with what each one is for: [saeedseo.com/repos/](https://saeedseo.com/repos/).
+What each one is for: [saeedseo.com/repos/](https://saeedseo.com/repos/).
 
 ## Cite
 
-Shahriar, S. (2026). *Claude SEO Skills Benchmark: 5 Claude Code SEO skill packs audited against 20 planted SEO issues* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23668169
+```
+Shahriar, S. (2026). Claude SEO Skills Benchmark: 5 Claude Code SEO skill packs audited against 20 planted SEO issues [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23668169
+```
 
 Or use GitHub's "Cite this repository" button (`CITATION.cff`).
 
